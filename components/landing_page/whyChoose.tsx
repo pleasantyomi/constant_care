@@ -176,7 +176,7 @@ export default function WhyChooseUs() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 mt-20 mb-20 overflow-hidden md:mt-0 bg-primary"
+      className="relative py-20 mt-20 mb-20 overflow-hidden md:mt-20 lg:mt-0 bg-primary"
     >
       <Image
         src="/backgrounds/seamless_2D_vector_background_pattern_202605132350.jpeg"

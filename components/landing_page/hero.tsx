@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -35,10 +36,11 @@ export default function Hero() {
         });
       });
 
-      // Desktop-only scroll choreography: pin the hero, widen the image to
-      // full bleed, then slide it up over the text before releasing the pin.
+      // Desktop-only (lg+) scroll choreography: pin the hero, widen the image
+      // to full bleed, then slide it up over the text before releasing the
+      // pin. Tablets and phones get the static hero.
       mm.add(
-        "(min-width: 768px) and (prefers-reduced-motion: no-preference)",
+        "(min-width: 1024px) and (prefers-reduced-motion: no-preference)",
         () => {
           const tl = gsap.timeline({
             scrollTrigger: {
@@ -70,12 +72,12 @@ export default function Hero() {
   );
 
   return (
-    <section ref={sectionRef} className="relative md:h-svh">
+    <section ref={sectionRef} className="relative lg:h-svh">
       <div
         ref={textRef}
-        className="md:w-[65%] w-11/12 mx-auto pt-14 pb-10 md:pb-12 space-y-3"
+        className="md:w-[85%] lg:w-[65%] w-11/12 mx-auto pt-14 lg:pt-14 md:pt-20 pb-10 md:pb-12 space-y-3"
       >
-        <h1 className="text-3xl font-semibold text-center md:text-6xl">
+        <h1 className="text-3xl font-semibold text-center md:text-5xl lg:text-6xl">
           Care with Purpose. <br />
           Support You Can Trust.
         </h1>
@@ -84,10 +86,15 @@ export default function Hero() {
           person-centred care and support services that empower individuals and
           families to live safely, independently, and with dignity.
         </p>
-        <div className="flex items-center justify-center space-x-2">
-          <Button className="md:text-base md:w-[24%] w-[50%] py-5 text-sm font-normal transition-all cursor-pointer hover:-translate-y-0.5 hover:shadow-md">
-            Request Services
-          </Button>
+        <div className="">
+          <Link
+            className="flex items-center justify-center w-full mx-auto"
+            href="/our-services"
+          >
+            <Button className="md:text-base md:w-[24%] w-[50%] py-5 text-sm font-normal transition-all cursor-pointer hover:-translate-y-0.5 hover:shadow-md">
+              Request Services
+            </Button>
+          </Link>
           {/* <Button className="md:text-base text-sm font-normal transition-all cursor-pointer hover:-translate-y-0.5 hover:shadow-md">
             Refer a Client
           </Button>

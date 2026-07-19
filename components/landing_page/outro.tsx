@@ -28,7 +28,7 @@ function HighlightedParagraph({
 }) {
   const [before, after] = template.split("{highlight}");
   return (
-    <p className="leading-relaxed text-muted-foreground">
+    <p className="text-sm leading-relaxed lg:text-base md:text-sm text-muted-foreground">
       {before}
       <span className="text-accent">{highlight}</span>
       {after}
@@ -42,7 +42,7 @@ export default function Outro() {
       <div className="grid items-center w-11/12 max-w-6xl gap-10 mx-auto md:grid-cols-2 md:gap-14">
         <FadeIn y={0} x={-48} className="space-y-4">
           {trustIntro.eyebrowLine && <AccentDash className="w-10" />}
-          <h1 className="text-2xl leading-snug md:text-3xl">
+          <h1 className="text-2xl leading-snug md:text-2xl lg:text-3xl">
             <span className="block text-foreground">
               {trustIntro.headingLine1}
             </span>

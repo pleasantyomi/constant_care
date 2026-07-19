@@ -17,7 +17,7 @@ export default function Footer() {
       />
 
       <div className="relative w-11/12 mx-auto">
-        <StaggerChildren className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+        <StaggerChildren className="grid gap-10  lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
             <Image
               src="/logo/CCFSI_LOGO_A.png"

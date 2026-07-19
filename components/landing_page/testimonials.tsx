@@ -113,7 +113,7 @@ export default function Testimonials() {
             type="button"
             aria-label="Previous testimonial"
             onClick={() => api?.scrollPrev()}
-            className="absolute left-0 z-10 flex items-center justify-center transition-colors -translate-y-1/2 border rounded-full cursor-pointer md:-left-10 w-9 h-9 top-1/2 border-accent/70 text-accent hover:bg-accent hover:text-white"
+            className="absolute left-0 z-10 flex items-center justify-center transition-colors -translate-y-1/2 border rounded-full cursor-pointer md:-left-4 lg:-left-10 w-9 h-9 top-1/2 border-accent/70 text-accent hover:bg-accent hover:text-white"
           >
             <ArrowLeft className="w-4 h-4" />
           </button>
@@ -130,7 +130,7 @@ export default function Testimonials() {
             type="button"
             aria-label="Next testimonial"
             onClick={() => api?.scrollNext()}
-            className="absolute right-0 z-10 flex items-center justify-center transition-colors -translate-y-1/2 border rounded-full cursor-pointer md:-right-10 w-9 h-9 top-1/2 border-accent/70 text-accent hover:bg-accent hover:text-white"
+            className="absolute right-0 z-10 flex items-center justify-center transition-colors -translate-y-1/2 border rounded-full cursor-pointer md:-right-4 lg:-right-10 w-9 h-9 top-1/2 border-accent/70 text-accent hover:bg-accent hover:text-white"
           >
             <ArrowRight className="w-4 h-4" />
           </button>
@@ -158,7 +158,7 @@ export default function Testimonials() {
               return (
                 <CarouselItem
                   key={`${item.id}-${slideIndex}`}
-                  className="md:basis-1/5 basis-full"
+                  className="md:basis-1/3 lg:basis-1/5 basis-full"
                 >
                   <button
                     type="button"

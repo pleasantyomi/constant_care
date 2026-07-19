@@ -32,7 +32,7 @@ export default function Mission() {
     },
   ];
   return (
-    <section className="w-11/12 py-12 mx-auto md:py-14 md:w-10/12">
+    <section className="w-11/12 py-12 mx-auto md:w-11/12 md:py-14 lg::w-10/12">
       <div>
         <div className="space-y-14 md:space-y-20">
           {contents.map((item) => (

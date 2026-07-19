@@ -79,7 +79,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop navigation */}
-        <nav className="items-center hidden gap-8 text-sm md:flex">
+        <nav className="items-center hidden md:hidden gap-8 text-sm lg:flex">
           {mainNav.map((link) =>
             link.label === "Our Services" ? (
               <div
@@ -149,7 +149,7 @@ export default function Header() {
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((open) => !open)}
-          className="cursor-pointer md:hidden text-foreground"
+          className="cursor-pointer lg:hidden text-foreground"
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -157,7 +157,7 @@ export default function Header() {
 
       {/* Mobile navigation panel */}
       {mobileOpen && (
-        <nav className="absolute left-0 w-full bg-white border-t shadow-md md:hidden top-full border-border animate-in fade-in slide-in-from-top-2 duration-200">
+        <nav className="absolute left-0 w-full bg-white border-t shadow-md lg:hidden top-full border-border animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="flex flex-col w-11/12 py-3 mx-auto text-sm">
             {mainNav.map((link) =>
               link.label === "Our Services" ? (
