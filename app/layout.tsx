@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
+import ScrollToTop from "@/components/shared/scroll-to-top";
 
 const helveticaNeue = localFont({
   src: [
@@ -115,6 +116,7 @@ export default function RootLayout({
       )}
     >
       <body className="flex flex-col min-h-full">
+        <ScrollToTop />
         <Header />
         {children}
         <Footer />
