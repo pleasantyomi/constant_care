@@ -85,15 +85,15 @@ export default function Hero() {
           families to live safely, independently, and with dignity.
         </p>
         <div className="flex items-center justify-center space-x-2">
-          <Button className="md:text-base text-sm font-normal transition-all cursor-pointer hover:-translate-y-0.5 hover:shadow-md">
+          <Button className="md:text-base md:w-[24%] w-[50%] py-5 text-sm font-normal transition-all cursor-pointer hover:-translate-y-0.5 hover:shadow-md">
             Request Services
           </Button>
-          <Button className="md:text-base text-sm font-normal transition-all cursor-pointer hover:-translate-y-0.5 hover:shadow-md">
+          {/* <Button className="md:text-base text-sm font-normal transition-all cursor-pointer hover:-translate-y-0.5 hover:shadow-md">
             Refer a Client
           </Button>
           <Button className="md:text-base text-sm font-normal transition-all cursor-pointer hover:-translate-y-0.5 hover:shadow-md">
             Join Our Team
-          </Button>
+          </Button> */}
         </div>
       </div>
 
