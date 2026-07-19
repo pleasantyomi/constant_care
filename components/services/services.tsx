@@ -86,7 +86,7 @@ export default function Services() {
         "Not everyone needs full-time care — some just need dependable support to stay active and connected. Our community-based services help individuals get to appointments, run errands, and take part in community life.",
         "Whether it's a weekly outing or occasional support, we meet people exactly where they are, on their schedule.",
       ],
-      link: "/our-services/senior-support-service",
+      link: "/our-services/senior-support-services",
     },
     {
       slug: "residential",
@@ -122,11 +122,11 @@ export default function Services() {
         "Not everyone needs full-time care — some just need dependable support to stay active and connected. Our community-based services help individuals get to appointments, run errands, and take part in community life.",
         "Whether it's a weekly outing or occasional support, we meet people exactly where they are, on their schedule.",
       ],
-      link: "/our-services/transportation-service",
+      link: "/our-services/transportation-services",
     },
   ];
   return (
-    <section className="w-11/12 mx-auto py-10">
+    <section className="w-11/12 py-10 mx-auto">
       <div className="space-y-16 md:space-y-20">
         {our_services.map((item) => (
           <article
@@ -153,7 +153,17 @@ export default function Services() {
               ))}
 
               <div className="flex items-center gap-3 pt-2">
-                <Button className="font-normal">Request This Service</Button>
+                <Button
+                  render={
+                    <Link
+                      href={`/contact-us?service=${encodeURIComponent(item.title)}`}
+                    />
+                  }
+                  nativeButton={false}
+                  className="font-normal transition-all hover:-translate-y-0.5 hover:shadow-md"
+                >
+                  Request This Service
+                </Button>
                 <Link
                   href={item.link}
                   className="inline-flex items-center gap-2 transition-colors group text-accent hover:text-primary"

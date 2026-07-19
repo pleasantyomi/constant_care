@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ReactNode } from "react";
+import FadeIn from "@/components/animations/fade-in";
 
 interface BackgroundProps {
   children: ReactNode;
@@ -22,7 +23,7 @@ export default function Background({
         className="object-cover pointer-events-none select-none opacity-40 mix-blend-multiply"
       />
 
-      <div className="relative z-10">{children}</div>
+      <FadeIn className="relative z-10">{children}</FadeIn>
     </div>
   );
 }

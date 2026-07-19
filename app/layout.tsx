@@ -5,7 +5,9 @@ import { cn } from "@/lib/utils";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import ScrollToTop from "@/components/shared/scroll-to-top";
+import RouteTransition from "@/components/shared/route-transition";
 import { Analytics } from "@vercel/analytics/next";
+import { Suspense } from "react";
 
 const helveticaNeue = localFont({
   src: [
@@ -178,6 +180,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={cn(
         "h-full",
         "antialiased",
@@ -187,6 +190,9 @@ export default function RootLayout({
       )}
     >
       <body className="flex flex-col min-h-full">
+        <Suspense fallback={null}>
+          <RouteTransition />
+        </Suspense>
         <ScrollToTop />
         <Header />
         {children}

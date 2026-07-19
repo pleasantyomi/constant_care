@@ -7,7 +7,7 @@ import { mainNav as quickLinks, services as ourServices } from "@/lib/nav";
 
 export default function Footer() {
   return (
-    <footer className="relative py-20 mt-24 overflow-hidden text-white bg-primary">
+    <footer className="relative py-20 overflow-hidden text-white bg-primary">
       <Image
         src="/backgrounds/seamless_2D_vector_pattern_design_202605132257.jpeg"
         alt=""
@@ -19,13 +19,16 @@ export default function Footer() {
       <div className="relative w-11/12 mx-auto">
         <StaggerChildren className="grid gap-10  lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
-            <Image
-              src="/logo/CCFSI_LOGO_A.png"
-              alt="Constant Care Family Services Inc."
-              width={378}
-              height={240}
-              className="h-auto w-36"
-            />
+            <Link href="/">
+              <Image
+                src="/logo/CCFSI_LOGO_A.png"
+                alt="Constant Care Family Services Inc."
+                width={378}
+                height={240}
+                className="h-auto w-36"
+              />
+            </Link>
+
             <p className="mt-4 text-sm leading-relaxed text-white/70">
               Compassionate, person-centred care and support services that
               empower individuals and families to live safely, independently,
@@ -76,11 +79,10 @@ export default function Footer() {
               Get In Touch
             </h2>
             <AccentDash className="w-8 mt-2" />
-            <p className="mt-4 text-sm leading-relaxed text-white/70">
-              Leave your email and our team will get back to you.
+            <p className="mt-4 space-y-0.5 text-sm leading-relaxed text-white/70">
+              <span className="block">+1 (506) 292-5181</span>
+              <span className="block">info@constantcarefamilyservices.com</span>
             </p>
-            {/* Add phone/email lines here once the official contact details
-                are confirmed. */}
             <form className="flex gap-2 mt-4">
               <label htmlFor="footer-email" className="sr-only">
                 Email address

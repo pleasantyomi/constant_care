@@ -1,20 +1,23 @@
 import Background from "@/components/shared/background";
 import Image from "next/image";
 import Services from "@/components/services/services";
+import FadeIn from "@/components/animations/fade-in";
 
 export default function OurServices() {
   return (
     <div>
       <Background>Our Services</Background>
-      <Image
-        src="/images/services/Home_care_support_worker_in_202607191117_5.jpeg"
-        alt="About Hero"
-        width={1000}
-        height={500}
-        className="w-11/12 h-[25vh] md:h-[30vh] lg:h-[60vh] object-top mt-12 object-cover mx-auto rounded-2xl "
-      />
+      <FadeIn>
+        <Image
+          src="/images/services/Home_care_support_worker_in_202607191117_5.jpeg"
+          alt="About Hero"
+          width={1000}
+          height={500}
+          className="w-11/12 h-[25vh] md:h-[30vh] lg:h-[60vh] object-top mt-12 object-cover mx-auto rounded-2xl "
+        />
+      </FadeIn>
 
-      <div className="w-11/12 pt-10 mx-auto md:w-11/12 lg:w-10/12">
+      <FadeIn className="w-11/12 pt-10 pb-10 mx-auto md:w-11/12 lg:w-10/12">
         <h1 className="text-xl font-medium text-center lg:text-2xl md:text-xl">
           Support for Every Stage, Every Need
         </h1>
@@ -25,7 +28,7 @@ export default function OurServices() {
             dignity
           </span>
         </p>
-      </div>
+      </FadeIn>
       <Services />
     </div>
   );

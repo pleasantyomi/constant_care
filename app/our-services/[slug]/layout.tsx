@@ -3,6 +3,7 @@ import Link from "next/link";
 import Background from "@/components/shared/background";
 import { Button } from "@/components/ui/button";
 import { servicesContent } from "@/lib/services-content";
+import FadeIn from "@/components/animations/fade-in";
 
 export default async function ServiceLayout({
   children,
@@ -26,15 +27,19 @@ export default async function ServiceLayout({
 
       {children}
 
-      <div className="pb-14">
+      <FadeIn className="pb-14">
         <Button
-          render={<Link href="/contact-us" />}
+          render={
+            <Link
+              href={`/contact-us?service=${encodeURIComponent(category.title)}`}
+            />
+          }
           nativeButton={false}
-          className="flex w-8/12 mx-auto font-normal md:w-3/12"
+          className="flex w-8/12 mx-auto font-normal transition-all md:w-3/12 hover:-translate-y-0.5 hover:shadow-md"
         >
           Request This Service
         </Button>
-      </div>
+      </FadeIn>
     </div>
   );
 }

@@ -28,14 +28,14 @@ export default function CTA() {
 
             <div className="flex flex-wrap items-center justify-center gap-3 mt-8">
               <Button
-                render={<Link href="/" />}
+                render={<Link href="/our-services" />}
                 nativeButton={false}
                 className="px-6 font-normal transition-all bg-white text-primary hover:bg-white/85 hover:-translate-y-0.5 hover:shadow-lg"
               >
                 Request a Service
               </Button>
               <Button
-                render={<Link href="/" />}
+                render={<Link href="/contact-us" />}
                 nativeButton={false}
                 className="px-6 font-normal text-white transition-all bg-transparent border border-white/60 hover:bg-white/10 hover:-translate-y-0.5"
               >
