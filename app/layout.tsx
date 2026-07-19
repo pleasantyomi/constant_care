@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import ScrollToTop from "@/components/shared/scroll-to-top";
+import { Analytics } from "@vercel/analytics/next";
 
 const helveticaNeue = localFont({
   src: [
@@ -93,10 +94,80 @@ const helveticaNeue = localFont({
   display: "swap",
 });
 
+// const siteUrl = "https://www.constantcarefamilyservices.com";
+const siteUrl = "https://constant-care.vercel.app/";
+const siteName = "Constant Care Family Services Inc.";
+const siteDescription =
+  "Constant Care Family Services Inc is a modern care-centred organisation committed to delivering inclusive, person-centred support services with professionalism, compassion, and structure.";
+
 export const metadata: Metadata = {
-  title: "CONSTANT CARE FAMILY SERVICES INC",
-  description:
-    "Constant Care Family Services Inc is a modern care-centred organisation committed to delivering inclusive, person-centred support services with professionalism, compassion, and structure.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: `${siteName} | Care with Purpose`,
+    template: `%s | ${siteName}`,
+  },
+  description: siteDescription,
+  keywords: [
+    "home care services",
+    "disability support services",
+    "family services",
+    "senior support",
+    "person-centred care",
+    "New Brunswick care services",
+    "Constant Care Family Services",
+  ],
+  authors: [{ name: siteName }],
+  creator: siteName,
+  publisher: siteName,
+  applicationName: siteName,
+  manifest: "/favicon/site.webmanifest",
+  icons: {
+    icon: [
+      { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/favicon/apple-touch-icon.png" }],
+  },
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_CA",
+    url: siteUrl,
+    siteName,
+    title: `${siteName} | Care with Purpose`,
+    description: siteDescription,
+    images: [
+      {
+        url: "/og_image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "A caregiver and client sharing a warm moment at home",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteName} | Care with Purpose`,
+    description: siteDescription,
+    images: ["/og_image.jpg"],
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#1A4F72",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -119,6 +190,7 @@ export default function RootLayout({
         <ScrollToTop />
         <Header />
         {children}
+        <Analytics />
         <Footer />
       </body>
     </html>

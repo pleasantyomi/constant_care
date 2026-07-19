@@ -19,7 +19,7 @@ export async function generateMetadata({
   if (!category) return {};
 
   return {
-    title: `${category.title} | Constant Care Family Services Inc.`,
+    title: category.title,
     description: category.description,
   };
 }
