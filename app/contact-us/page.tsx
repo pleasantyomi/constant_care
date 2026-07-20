@@ -7,7 +7,7 @@ export default function Contact() {
   return (
     <div>
       <Background>Contact Us</Background>
-      <section className="pt-12 md:py-14 md:pt-14">
+      <section className="py-12 md:py-14">
         <Suspense>
           <Form />
         </Suspense>
