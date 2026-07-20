@@ -17,8 +17,8 @@ export default function Services() {
         "A senior enjoying tea with a caregiver in a bright living room",
       imagePosition: "right", // alternates per item, see map below
       paragraphs: [
-        "Aging at home shouldn't mean losing independence. Our senior support services help older adults stay safe, comfortable, and connected — from companionship and wellness visits to meal preparation and transportation to the places that matter.",
-        "We build every visit around dignity first. Our support workers get to know each senior's routines, preferences, and pace, so care feels less like a service and more like a trusted relationship.",
+        "Everyday support that helps individuals remain safe, comfortable, and independent in their own home — from personal care and meal preparation to medication reminders and light housekeeping.",
+        "Every visit is built around the individual's own routine and preferences, so support feels like a trusted relationship rather than a checklist of tasks to complete.",
       ],
       link: "/our-services/home-care-services",
     },
@@ -45,8 +45,8 @@ export default function Services() {
         "A youth support worker mentoring a teenager at a kitchen table",
       imagePosition: "right",
       paragraphs: [
-        "Young people need consistency, patience, and someone in their corner. Our youth services provide one-to-one mentoring, behavioural support, and crisis support that meets kids and teens exactly where they are.",
-        "We work closely with families and schools to keep support connected across every part of a young person's life, not just the hours we're there.",
+        "Support that helps individuals participate fully and confidently in community life — from shopping assistance and medical appointments to social activities and daily living skills.",
+        "We meet people where they are, whether that's running errands, attending a program, or simply staying connected to the community around them.",
       ],
       link: "/our-services/community-support",
     },
@@ -58,8 +58,8 @@ export default function Services() {
       imageAlt: "A caregiver providing calm, attentive hands-on assistance",
       imagePosition: "left",
       paragraphs: [
-        "Some individuals need a higher, more coordinated level of care. Our team is trained to provide structured, consistent support for complex needs, with individualized care planning at the centre of everything we do.",
-        "We coordinate closely with families, case managers, and healthcare providers so nothing falls through the cracks.",
+        "Reliable relief for family caregivers, so they can rest, recharge, and return to caregiving with renewed strength — available in-home or through community-based respite.",
+        "Respite care is scheduled around your family's real, changing needs, never a rigid, one-size-fits-all plan.",
       ],
       link: "/our-services/respite-services",
     },
@@ -71,8 +71,8 @@ export default function Services() {
       imageAlt: "A multigenerational family relaxed together at home",
       imagePosition: "right",
       paragraphs: [
-        "Caregiving is demanding, and no one should have to carry it alone. Our respite and family services give caregivers real relief — in-home, in the community, or on a flexible schedule that works for your family.",
-        "Beyond respite, our family navigation and advocacy services help families find their way through a complicated system with someone in their corner.",
+        "Dedicated one-to-one support that helps children and young people build skills, confidence, and stability — through mentoring, behavioural support, and life skills coaching.",
+        "We work closely with families and schools to keep support connected across every part of a young person's life, not just the hours we're there.",
       ],
       link: "/our-services/youth-services",
     },
@@ -83,8 +83,8 @@ export default function Services() {
       imageAlt: "A small group at a community activity",
       imagePosition: "left",
       paragraphs: [
-        "Not everyone needs full-time care — some just need dependable support to stay active and connected. Our community-based services help individuals get to appointments, run errands, and take part in community life.",
-        "Whether it's a weekly outing or occasional support, we meet people exactly where they are, on their schedule.",
+        "Compassionate support that helps seniors stay active, connected, and comfortable at home — from companion care and wellness visits to meal preparation and transportation.",
+        "We build every visit around dignity first, so care feels less like a service and more like a trusted relationship.",
       ],
       link: "/our-services/senior-support-services",
     },
@@ -95,8 +95,8 @@ export default function Services() {
       imageAlt: "A small group at a community activity",
       imagePosition: "right",
       paragraphs: [
-        "Not everyone needs full-time care — some just need dependable support to stay active and connected. Our community-based services help individuals get to appointments, run errands, and take part in community life.",
-        "Whether it's a weekly outing or occasional support, we meet people exactly where they are, on their schedule.",
+        "Structured, individualized residential support for youth and adults who need a higher level of care, with planning built around each person's needs and goals.",
+        "Reach out to discuss availability and eligibility — our team can walk you through what residential support could look like for your family.",
       ],
       link: "/our-services/residential-services",
     },
@@ -107,8 +107,8 @@ export default function Services() {
       imageAlt: "A small group at a community activity",
       imagePosition: "left",
       paragraphs: [
-        "Not everyone needs full-time care — some just need dependable support to stay active and connected. Our community-based services help individuals get to appointments, run errands, and take part in community life.",
-        "Whether it's a weekly outing or occasional support, we meet people exactly where they are, on their schedule.",
+        "Support that strengthens and empowers the whole family, not just the individual receiving care — including parent support, family navigation, and care coordination.",
+        "We stand beside families as they navigate a complex care system, so no one has to figure it out alone.",
       ],
       link: "/our-services/family-services",
     },
@@ -119,14 +119,14 @@ export default function Services() {
       imageAlt: "A small group at a community activity",
       imagePosition: "right",
       paragraphs: [
-        "Not everyone needs full-time care — some just need dependable support to stay active and connected. Our community-based services help individuals get to appointments, run errands, and take part in community life.",
-        "Whether it's a weekly outing or occasional support, we meet people exactly where they are, on their schedule.",
+        "Dependable transportation that keeps individuals connected to medical appointments, shopping, community activities, and the people who matter most.",
+        "Every ride is scheduled with care, so getting there is never the hardest part of the day.",
       ],
       link: "/our-services/transportation-services",
     },
   ];
   return (
-    <section className="w-11/12 py-10 mx-auto">
+    <section className="w-11/12 py-14 mx-auto">
       <div className="space-y-16 md:space-y-20">
         {our_services.map((item) => (
           <article

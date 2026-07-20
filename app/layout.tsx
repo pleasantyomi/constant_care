@@ -5,9 +5,8 @@ import { cn } from "@/lib/utils";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import ScrollToTop from "@/components/shared/scroll-to-top";
-import RouteTransition from "@/components/shared/route-transition";
+import ScrollTriggerRefresh from "@/components/shared/scroll-trigger-refresh";
 import { Analytics } from "@vercel/analytics/next";
-import { Suspense } from "react";
 
 const helveticaNeue = localFont({
   src: [
@@ -187,13 +186,12 @@ export default function RootLayout({
         helveticaNeue.variable,
         "font-sans",
         "scroll-smooth ",
+        "overflow-x-hidden",
       )}
     >
       <body className="flex flex-col min-h-full">
-        <Suspense fallback={null}>
-          <RouteTransition />
-        </Suspense>
         <ScrollToTop />
+        <ScrollTriggerRefresh />
         <Header />
         {children}
         <Analytics />
