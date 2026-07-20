@@ -80,7 +80,7 @@ export default function Footer() {
             </h2>
             <AccentDash className="w-8 mt-2" />
             <p className="mt-4 space-y-0.5 text-sm leading-relaxed text-white/70">
-              <span className="block">+1 (506) 292-5181</span>
+              <span className="block">+1 (506) 300-0055</span>
               <span className="block">info@constantcarefamilyservices.com</span>
             </p>
             <form className="flex gap-2 mt-4">

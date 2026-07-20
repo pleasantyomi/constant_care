@@ -37,13 +37,28 @@ const steps: {
 
 export default function Approach() {
   return (
-    <section className="py-14 mb-6 bg-white">
+    <section className="py-14 bg-secondary/40 md:py-20">
       <div className="w-11/12 mx-auto md:w-10/12">
-        <FadeIn className="mb-12">
-          <h1 className="text-2xl text-center md:text-3xl text-primary">
-            How We Work
-          </h1>
-          <AccentDash className="w-2/12 mx-auto mt-2 origin-center md:mt-3 md:w-1/12 border-primary" />
+        <FadeIn className="max-w-3xl mx-auto mb-12 text-center">
+          <span className="text-xs font-semibold tracking-widest uppercase text-accent">
+            Our Approach
+          </span>
+          <AccentDash className="w-10 mx-auto mt-2 origin-center border-primary" />
+          <h2 className="mt-4 text-2xl font-bold leading-snug md:text-3xl text-primary">
+            Person-Centred. Evidence-Informed. Community-Focused.
+          </h2>
+          <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
+            Every individual has unique goals, strengths, experiences, and
+            aspirations. Our approach begins by listening.
+          </p>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+            We work alongside individuals and families to develop
+            personalized support plans that respect personal choices while
+            promoting independence, safety, community participation, and
+            long-term success. By combining evidence-informed practices with
+            compassionate relationships, we deliver care that adapts as
+            people&rsquo;s needs evolve.
+          </p>
         </FadeIn>
 
         <StaggerChildren className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

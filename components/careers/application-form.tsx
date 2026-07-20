@@ -16,9 +16,10 @@ import {
 } from "@/components/ui/select";
 
 const positions = [
+  "Youth Support Worker",
+  "Behavioural Analyst",
   "Personal Support Worker (PSW)",
   "Disability Support Worker (DSW)",
-  "Youth Worker",
   "Respite Worker",
   "Care Coordinator",
   "Administrative / Office Role",

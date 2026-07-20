@@ -34,7 +34,7 @@ export default async function ServicePage({
   if (!category) notFound();
 
   return (
-    <section className="w-11/12 py-14 mx-auto md:py-14 md:w-10/12">
+    <section className="w-11/12 py-14 mx-auto md:py-14 md:w-10/12 overflow-x-hidden">
       {/* <FadeIn className="overflow-hidden shadow-lg rounded-2xl">
         <Image
           src={category.heroImage}

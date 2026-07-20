@@ -5,7 +5,7 @@ import FadeIn from "@/components/animations/fade-in";
 
 export default function OurServices() {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Background>Our Services</Background>
       <FadeIn>
         <Image

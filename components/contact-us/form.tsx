@@ -56,22 +56,16 @@ export default function Form() {
           className="object-cover pointer-events-none select-none rounded-2xl opacity-40 mix-blend-multiply"
         />
         <div>
-          <h2 className="pb-2 text-lg font-medium">Our Location</h2>
-          <p className="lg:text-sm md:text-[12px] text-sm grid">
-            <span>105 Brianna</span> <span>Fredericton, NB, Canada</span>
-          </p>
-        </div>
-        <div>
           <h2 className="pb-2 text-lg font-medium">Contact</h2>
           <p className="grid lg:text-sm md:text-[12px] text-sm">
-            <span>Phone: +1 (506) 292-5181</span>
+            <span>Phone: +1 (506) 300-0055</span>
             <span>Email: info@constantcarefamilyservices.com</span>
           </p>
         </div>
         <div>
           <h2 className="pb-2 text-lg font-medium">Open Time</h2>
           <p className="grid lg:text-sm md:text-[12px] text-sm">
-            <span>Monday - Friday: 10:00 - 18:00</span>
+            <span>Monday - Friday: 8:00 AM - 5:30 PM</span>
           </p>
         </div>
         <div>

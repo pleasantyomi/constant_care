@@ -8,7 +8,7 @@ import Outro from "@/components/landing_page/outro";
 
 export default function Home() {
   return (
-    <div className="">
+    <div className="overflow-x-hidden">
       <Hero />
       <div className="relative z-10 flow-root bg-background">
         <WhyChooseUs />

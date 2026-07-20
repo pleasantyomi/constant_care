@@ -75,12 +75,15 @@ export default function Hero() {
     <section ref={sectionRef} className="relative lg:h-svh">
       <div
         ref={textRef}
-        className="md:w-[85%] lg:w-[65%] w-11/12 mx-auto pt-14 lg:pt-14 md:pt-20 pb-10 md:pb-12 space-y-3"
+        className="md:w-[90%] lg:w-[70%] w-11/12 mx-auto pt-14 lg:pt-20 md:pt-20 pb-10 md:pb-12 space-y-3"
       >
-        <h1 className="text-3xl font-semibold text-center md:text-5xl lg:text-6xl">
-          Care with Purpose. <br />
-          Support You Can Trust.
+        <h1 className="text-2xl font-semibold text-center md:text-5xl lg:text-6xl">
+          Redefining Community Care. <br />
+          Empowering Every Journey.
         </h1>
+        {/* <p className="text-sm italic font-medium tracking-wide text-center text-accent">
+          Care with Purpose. Support You Can Trust.
+        </p> */}
         <p className="text-center md:text-lg">
           Constant Care Family Services Inc. provides compassionate,
           person-centred care and support services that empower individuals and

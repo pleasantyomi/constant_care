@@ -1,48 +1,34 @@
-import Background from "@/components/shared/background";
-import Image from "next/image";
-import Mission from "@/components/about-us/mission";
-import CoreValues from "@/components/about-us/core-values";
+import Hero from "@/components/about-us/hero";
+import WhoWeAre from "@/components/about-us/who-we-are";
+import WhyWeExist from "@/components/about-us/why-we-exist";
+import MissionVision from "@/components/about-us/mission-vision";
+import Values from "@/components/about-us/values";
 import Approach from "@/components/about-us/approach";
-import FadeIn from "@/components/animations/fade-in";
-import StaggerChildren from "@/components/animations/stagger-children";
+import Difference from "@/components/about-us/difference";
+import Impact from "@/components/about-us/impact";
+import WhoWeServe from "@/components/about-us/who-we-serve";
+import LookingAhead from "@/components/about-us/looking-ahead";
+import FinalCta from "@/components/about-us/final-cta";
+
+// Founders' Message isn't rendered yet — components/about-us/founders-message.tsx
+// is ready to go, but its body copy is a structural placeholder, not a real
+// quote. Drop it in below Impact (or wherever reads best) once the founders'
+// actual words are ready.
 
 export default function About() {
   return (
-    <div>
-      <Background>About Us</Background>
-      <FadeIn>
-        <Image
-          src="/images/about_hero.jpeg"
-          alt="About Hero"
-          width={1000}
-          height={500}
-          className="w-11/12 h-[25vh] md:h-[30vh] lg:h-[60vh] object-top mt-12 object-cover mx-auto rounded-2xl "
-        />
-      </FadeIn>
-
-      <div className="w-11/12 pt-10 mx-auto md:w-11/12 lg:w-10/12">
-        <StaggerChildren className="grid gap-3">
-          <span>
-            Constant Care Family Services Inc is a modern care-centred
-            organisation committed to delivering inclusive, person-centred
-            support services with professionalism, compassion, and structure.
-          </span>
-          <span>
-            The brand exists to create an environment where individuals and
-            families feel safe, respected, supported, and empowered through
-            coordinated care systems that prioritise dignity, reliability, and
-            quality.
-          </span>
-          <span>
-            Constant Care Family Services Inc is not just a healthcare service
-            provider, it is a trusted support system designed around people
-          </span>
-        </StaggerChildren>
-      </div>
-
-      <Mission />
-      <CoreValues />
+    <div className="overflow-x-hidden">
+      <Hero />
+      <WhoWeAre />
+      <WhyWeExist />
+      <MissionVision />
+      <Values />
       <Approach />
+      <Difference />
+      <Impact />
+      <WhoWeServe />
+      <LookingAhead />
+      <FinalCta />
     </div>
   );
 }

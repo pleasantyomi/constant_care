@@ -4,17 +4,30 @@ import AccentDash from "@/components/animations/accent-dash";
 import FadeIn from "@/components/animations/fade-in";
 import { Button } from "@/components/ui/button";
 
-// Replace with a real listing (title, department, location, type) once
-// positions are posted — either manually or pulled from an ATS. Until then
-// this renders the fallback empty state.
+// Manually updated for now — swap for an ATS-driven list later if hiring
+// volume grows. Keep "category" to a role family rather than employment
+// type (full-time/part-time) until that's confirmed per posting.
 type Opening = {
   title: string;
-  department: string;
-  type: string;
+  category: string;
+  location: string;
   href: string;
 };
 
-const openings: Opening[] = [];
+const openings: Opening[] = [
+  {
+    title: "Youth Support Worker",
+    category: "Youth Services",
+    location: "New Brunswick",
+    href: "#apply",
+  },
+  {
+    title: "Behavioural Analyst",
+    category: "Clinical & Behavioural Support",
+    location: "New Brunswick",
+    href: "#apply",
+  },
+];
 
 export default function CurrentOpenings() {
   return (
@@ -38,7 +51,7 @@ export default function CurrentOpenings() {
                 <div>
                   <p className="font-bold text-foreground">{opening.title}</p>
                   <p className="text-sm text-muted-foreground">
-                    {opening.department} &middot; {opening.type}
+                    {opening.category} &middot; {opening.location}
                   </p>
                 </div>
                 <ArrowRight className="w-5 h-5 shrink-0 text-accent" aria-hidden />

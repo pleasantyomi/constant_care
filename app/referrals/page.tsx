@@ -4,7 +4,7 @@ import ReferralForm from "@/components/referrals/referral-form";
 
 export default function Referrals() {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Background className="md:py-10">
         <h1>Refer a Client</h1>
         {/* <p className="w-10/12 pt-3 mx-auto text-base font-normal leading-tight md:w-6/12">
