@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { services } from "@/lib/nav";
+import Link from "next/link";
 
 export default function Form() {
   const searchParams = useSearchParams();
@@ -91,8 +92,13 @@ export default function Form() {
         <div>
           <h2 className="pb-2 text-lg font-medium">Contact</h2>
           <p className="grid lg:text-sm md:text-[12px] text-sm">
-            <span>Phone: +1 (506) 300-0055</span>
-            <span>Email: info@constantcarefamilyservices.com</span>
+            <Link href="tel:+15063000055">Phone: +1 (506) 300-0055</Link>
+            <span>
+              Email:{" "}
+              <Link href="mailto:info@constantcarefamilyservices.com">
+                info@constantcarefamilyservices.com
+              </Link>
+            </span>
           </p>
         </div>
         <div>
@@ -139,7 +145,12 @@ export default function Form() {
               <label htmlFor="contact-name" className="text-base font-medium">
                 Your Name
               </label>
-              <Input id="contact-name" name="name" required placeholder="eg. John Doe" />
+              <Input
+                id="contact-name"
+                name="name"
+                required
+                placeholder="eg. John Doe"
+              />
             </div>
             <div className="grid space-y-1">
               <label htmlFor="contact-email" className="text-base font-medium">
@@ -168,7 +179,10 @@ export default function Form() {
               />
             </div>
             <div className="grid space-y-1">
-              <label htmlFor="contact-service" className="text-base font-medium">
+              <label
+                htmlFor="contact-service"
+                className="text-base font-medium"
+              >
                 Service
               </label>
               <Select name="service" defaultValue={defaultService}>
@@ -212,14 +226,14 @@ export default function Form() {
             </Button>
             {status === "sent" && (
               <p className="mt-3 text-sm text-accent">
-                Thanks — we&rsquo;ve received your message and will be in
-                touch soon.
+                Thanks — we&rsquo;ve received your message and will be in touch
+                soon.
               </p>
             )}
             {status === "error" && (
               <p className="mt-3 text-sm text-destructive">
-                Something went wrong. Please try again, or reach us directly
-                at info@constantcarefamilyservices.com.
+                Something went wrong. Please try again, or reach us directly at
+                info@constantcarefamilyservices.com.
               </p>
             )}
           </div>

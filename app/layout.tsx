@@ -95,8 +95,8 @@ const helveticaNeue = localFont({
   display: "swap",
 });
 
-// const siteUrl = "https://www.constantcarefamilyservices.com";
-const siteUrl = "https://constant-care.vercel.app/";
+const siteUrl = "https://www.constantcarefamilyservices.com";
+// const siteUrl = "https://constant-care.vercel.app/";
 const siteName = "Constant Care Family Services Inc.";
 const siteDescription =
   "Constant Care Family Services Inc is a modern care-centred organisation committed to delivering inclusive, person-centred support services with professionalism, compassion, and structure.";

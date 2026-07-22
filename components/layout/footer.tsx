@@ -110,8 +110,13 @@ export default function Footer() {
             </h2>
             <AccentDash className="w-8 mt-2" />
             <p className="mt-4 space-y-0.5 text-sm leading-relaxed text-white/70">
-              <span className="block">+1 (506) 300-0055</span>
-              <span className="block">info@constantcarefamilyservices.com</span>
+              <Link href="tel:+15063000055">Phone: +1 (506) 300-0055</Link>
+              <Link
+                className="block"
+                href="mailto:info@constantcarefamilyservices.com"
+              >
+                info@constantcarefamilyservices.com
+              </Link>
             </p>
             {status === "sent" ? (
               <p className="mt-4 text-sm text-accent">
