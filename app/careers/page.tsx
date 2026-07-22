@@ -4,6 +4,10 @@ import Certifications from "@/components/careers/certifications";
 import CurrentOpenings from "@/components/careers/current-openings";
 import ApplicationForm from "@/components/careers/application-form";
 
+// Current Openings reads from the database — force dynamic rendering so
+// admin edits show up immediately instead of waiting for a redeploy.
+export const dynamic = "force-dynamic";
+
 export default function Careers() {
   return (
     <div className="overflow-x-hidden">

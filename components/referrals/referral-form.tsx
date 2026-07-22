@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, type FormEvent } from "react";
 import AccentDash from "@/components/animations/accent-dash";
 import FadeIn from "@/components/animations/fade-in";
 import { Button } from "@/components/ui/button";
@@ -31,6 +32,55 @@ const relationships = [
 const urgencyLevels = ["Standard", "Priority", "Urgent"];
 
 export default function ReferralForm() {
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle",
+  );
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    // Capture the form element now — event.currentTarget is only valid
+    // during synchronous event dispatch and becomes null once the awaits
+    // below resume, so grabbing it later would throw and land in catch.
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    setStatus("sending");
+    setErrorMessage(null);
+    try {
+      const response = await fetch("/api/referrals", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          referrerName: formData.get("referrerName"),
+          relationship: formData.get("relationship"),
+          organization: formData.get("organization"),
+          referrerPhone: formData.get("referrerPhone"),
+          referrerEmail: formData.get("referrerEmail"),
+          clientName: formData.get("clientName"),
+          clientContact: formData.get("clientContact"),
+          service: formData.get("service"),
+          urgency: formData.get("urgency"),
+          reason: formData.get("reason"),
+          notes: formData.get("notes"),
+          consent: formData.get("consent"),
+        }),
+      });
+      if (!response.ok) {
+        const data = await response.json().catch(() => null);
+        throw new Error(data?.error);
+      }
+      setStatus("sent");
+      form.reset();
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage(
+        error instanceof Error && error.message
+          ? error.message
+          : "Something went wrong. Please try again.",
+      );
+    }
+  }
+
   return (
     <section id="refer" className="py-14 bg-secondary/40 scroll-mt-24">
       <div className="w-11/12 mx-auto md:w-10/12 lg:w-8/12">
@@ -45,16 +95,8 @@ export default function ReferralForm() {
           </p>
         </FadeIn>
 
-        <FadeIn
-          // Not wired to a backend yet — connect this to an email service or
-          // intake system before launch. preventDefault avoids the native
-          // GET-reload behavior in the meantime.
-          className="p-6 bg-white border shadow-sm rounded-2xl border-border md:p-10"
-        >
-          <form
-            className="grid gap-5"
-            onSubmit={(event) => event.preventDefault()}
-          >
+        <FadeIn className="p-6 bg-white border shadow-sm rounded-2xl border-border md:p-10">
+          <form className="grid gap-5" onSubmit={handleSubmit}>
             <h2 className="text-sm font-semibold tracking-wide uppercase text-muted-foreground">
               About You
             </h2>
@@ -70,7 +112,7 @@ export default function ReferralForm() {
                 <label htmlFor="ref-relationship" className="text-sm font-medium">
                   Role / Relationship to Client
                 </label>
-                <Select name="relationship">
+                <Select name="relationship" required>
                   <SelectTrigger id="ref-relationship" className="w-full">
                     <SelectValue placeholder="Select an option" />
                   </SelectTrigger>
@@ -169,7 +211,7 @@ export default function ReferralForm() {
                 <label htmlFor="ref-urgency" className="text-sm font-medium">
                   Urgency Level
                 </label>
-                <Select name="urgency">
+                <Select name="urgency" defaultValue="Standard">
                   <SelectTrigger id="ref-urgency" className="w-full">
                     <SelectValue placeholder="Select urgency" />
                   </SelectTrigger>
@@ -221,9 +263,26 @@ export default function ReferralForm() {
               </span>
             </label>
 
-            <Button type="submit" className="justify-self-start">
-              Submit a Referral
-            </Button>
+            <div>
+              <Button
+                type="submit"
+                disabled={status === "sending"}
+                className="justify-self-start disabled:opacity-60"
+              >
+                {status === "sending" ? "Submitting..." : "Submit a Referral"}
+              </Button>
+              {status === "sent" && (
+                <p className="mt-3 text-sm text-accent">
+                  Thank you — we&rsquo;ve received the referral and will
+                  follow up promptly.
+                </p>
+              )}
+              {status === "error" && (
+                <p className="mt-3 text-sm text-destructive">
+                  {errorMessage}
+                </p>
+              )}
+            </div>
           </form>
         </FadeIn>
       </div>

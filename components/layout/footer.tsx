@@ -1,11 +1,41 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState, type FormEvent } from "react";
 import { Input } from "@/components/ui/input";
 import AccentDash from "@/components/animations/accent-dash";
 import StaggerChildren from "@/components/animations/stagger-children";
 import { mainNav as quickLinks, services as ourServices } from "@/lib/nav";
 
 export default function Footer() {
+  const pathname = usePathname();
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle",
+  );
+
+  async function handleSubscribe(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatus("sending");
+    try {
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (!response.ok) throw new Error();
+      setStatus("sent");
+      setEmail("");
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  // Admin is its own internal tool, not part of the public marketing site.
+  if (pathname.startsWith("/admin")) return null;
+
   return (
     <footer className="relative py-20 overflow-hidden text-white bg-primary">
       <Image
@@ -83,25 +113,39 @@ export default function Footer() {
               <span className="block">+1 (506) 300-0055</span>
               <span className="block">info@constantcarefamilyservices.com</span>
             </p>
-            <form className="flex gap-2 mt-4">
-              <label htmlFor="footer-email" className="sr-only">
-                Email address
-              </label>
-              <Input
-                id="footer-email"
-                type="email"
-                name="email"
-                required
-                placeholder="Enter your email"
-                className="text-white border-white/25 bg-white/10 placeholder:text-white/40 focus-visible:border-accent focus-visible:ring-accent/40"
-              />
-              <button
-                type="submit"
-                className="px-4 text-sm font-medium text-white transition-all rounded-md cursor-pointer shrink-0 bg-accent hover:bg-accent/80 hover:-translate-y-0.5 hover:shadow-md"
-              >
-                Send
-              </button>
-            </form>
+            {status === "sent" ? (
+              <p className="mt-4 text-sm text-accent">
+                Thanks — you&rsquo;re on the list.
+              </p>
+            ) : (
+              <form className="flex gap-2 mt-4" onSubmit={handleSubscribe}>
+                <label htmlFor="footer-email" className="sr-only">
+                  Email address
+                </label>
+                <Input
+                  id="footer-email"
+                  type="email"
+                  name="email"
+                  required
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  placeholder="Enter your email"
+                  className="text-white border-white/25 bg-white/10 placeholder:text-white/40 focus-visible:border-accent focus-visible:ring-accent/40"
+                />
+                <button
+                  type="submit"
+                  disabled={status === "sending"}
+                  className="px-4 text-sm font-medium text-white transition-all rounded-md cursor-pointer shrink-0 bg-accent hover:bg-accent/80 hover:-translate-y-0.5 hover:shadow-md disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+                >
+                  {status === "sending" ? "Sending..." : "Send"}
+                </button>
+              </form>
+            )}
+            {status === "error" && (
+              <p className="mt-2 text-xs text-white/60">
+                Something went wrong — please try again.
+              </p>
+            )}
           </div>
         </StaggerChildren>
 

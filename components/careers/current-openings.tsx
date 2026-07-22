@@ -1,35 +1,20 @@
 import Link from "next/link";
+import { asc, eq } from "drizzle-orm";
 import { Briefcase, ArrowRight } from "lucide-react";
 import AccentDash from "@/components/animations/accent-dash";
 import FadeIn from "@/components/animations/fade-in";
 import { Button } from "@/components/ui/button";
+import { db, schema } from "@/lib/db";
 
-// Manually updated for now — swap for an ATS-driven list later if hiring
-// volume grows. Keep "category" to a role family rather than employment
-// type (full-time/part-time) until that's confirmed per posting.
-type Opening = {
-  title: string;
-  category: string;
-  location: string;
-  href: string;
-};
+export default async function CurrentOpenings() {
+  const openings = db
+    ? await db
+        .select()
+        .from(schema.jobOpenings)
+        .where(eq(schema.jobOpenings.isActive, true))
+        .orderBy(asc(schema.jobOpenings.displayOrder))
+    : [];
 
-const openings: Opening[] = [
-  {
-    title: "Youth Support Worker",
-    category: "Youth Services",
-    location: "New Brunswick",
-    href: "#apply",
-  },
-  {
-    title: "Behavioural Analyst",
-    category: "Clinical & Behavioural Support",
-    location: "New Brunswick",
-    href: "#apply",
-  },
-];
-
-export default function CurrentOpenings() {
   return (
     <section className="py-14 bg-white">
       <div className="w-11/12 mx-auto md:w-10/12">
@@ -44,8 +29,8 @@ export default function CurrentOpenings() {
           <div className="grid max-w-3xl gap-4 mx-auto">
             {openings.map((opening) => (
               <Link
-                key={opening.title}
-                href={opening.href}
+                key={opening.id}
+                href="#apply"
                 className="flex items-center justify-between gap-4 p-5 transition-colors bg-white border rounded-lg shadow-sm border-border hover:border-accent"
               >
                 <div>

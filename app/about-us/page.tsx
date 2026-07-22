@@ -15,6 +15,10 @@ import FinalCta from "@/components/about-us/final-cta";
 // quote. Drop it in below Impact (or wherever reads best) once the founders'
 // actual words are ready.
 
+// Impact reads from the database — force dynamic rendering so admin-added
+// stats show up immediately instead of waiting for a redeploy.
+export const dynamic = "force-dynamic";
+
 export default function About() {
   return (
     <div className="overflow-x-hidden">

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
@@ -26,6 +27,38 @@ export default function Form() {
   )
     ? requestedService!
     : undefined;
+
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle",
+  );
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    // Capture the form element now — event.currentTarget is only valid
+    // during synchronous event dispatch and becomes null once the awaits
+    // below resume, so grabbing it later would throw and land in catch.
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    setStatus("sending");
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          service: formData.get("service"),
+          message: formData.get("message"),
+        }),
+      });
+      if (!response.ok) throw new Error();
+      setStatus("sent");
+      form.reset();
+    } catch {
+      setStatus("error");
+    }
+  }
 
   const socials = [
     {
@@ -97,12 +130,9 @@ export default function Form() {
           </p>
         )}
 
-        {/* Not wired to a backend yet — connect this to an email service or
-            CRM endpoint before launch. preventDefault avoids the native
-            GET-reload behavior in the meantime. */}
         <form
           className="grid pt-8 space-y-4 md:space-y-6"
-          onSubmit={(event) => event.preventDefault()}
+          onSubmit={handleSubmit}
         >
           <div className="grid space-y-4 md:space-x-4 md:space-y-0 md:grid-cols-2 ">
             <div className="grid space-y-1">
@@ -173,9 +203,25 @@ export default function Form() {
           </div>
 
           <div>
-            <Button type="submit" className="w-6/12 lg:w-3/12">
-              Send Message
+            <Button
+              type="submit"
+              disabled={status === "sending"}
+              className="w-6/12 lg:w-3/12 disabled:opacity-60"
+            >
+              {status === "sending" ? "Sending..." : "Send Message"}
             </Button>
+            {status === "sent" && (
+              <p className="mt-3 text-sm text-accent">
+                Thanks — we&rsquo;ve received your message and will be in
+                touch soon.
+              </p>
+            )}
+            {status === "error" && (
+              <p className="mt-3 text-sm text-destructive">
+                Something went wrong. Please try again, or reach us directly
+                at info@constantcarefamilyservices.com.
+              </p>
+            )}
           </div>
         </form>
       </div>

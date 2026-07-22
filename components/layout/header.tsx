@@ -11,6 +11,7 @@ import { mainNav, services } from "@/lib/nav";
 export default function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const isAdmin = pathname.startsWith("/admin");
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
@@ -59,6 +60,9 @@ export default function Header() {
       "transition-colors hover:text-accent",
       isActive(href) && "text-accent font-medium",
     );
+
+  // Admin is its own internal tool, not part of the public marketing site.
+  if (isAdmin) return null;
 
   return (
     <header

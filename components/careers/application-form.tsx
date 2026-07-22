@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useId, useState, type FormEvent } from "react";
 import { UploadCloud } from "lucide-react";
 import AccentDash from "@/components/animations/accent-dash";
 import FadeIn from "@/components/animations/fade-in";
@@ -29,6 +29,41 @@ const positions = [
 export default function ApplicationForm() {
   const resumeInputId = useId();
   const [resumeName, setResumeName] = useState<string | null>(null);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle",
+  );
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    // Capture the form element now — event.currentTarget is only valid
+    // during synchronous event dispatch and becomes null once the awaits
+    // below resume, so grabbing it later would throw and land in catch.
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    setStatus("sending");
+    setErrorMessage(null);
+    try {
+      const response = await fetch("/api/applications", {
+        method: "POST",
+        body: formData,
+      });
+      if (!response.ok) {
+        const data = await response.json().catch(() => null);
+        throw new Error(data?.error);
+      }
+      setStatus("sent");
+      form.reset();
+      setResumeName(null);
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage(
+        error instanceof Error && error.message
+          ? error.message
+          : "Something went wrong. Please try again.",
+      );
+    }
+  }
 
   return (
     <section id="apply" className="py-14 bg-secondary/40 scroll-mt-24">
@@ -43,16 +78,8 @@ export default function ApplicationForm() {
           </p>
         </FadeIn>
 
-        <FadeIn
-          // Not wired to a backend yet — connect this to an email service or
-          // ATS endpoint before launch. preventDefault avoids the native
-          // GET-reload behavior in the meantime.
-          className="p-6 bg-white border shadow-sm rounded-2xl border-border md:p-10"
-        >
-          <form
-            className="grid gap-5"
-            onSubmit={(event) => event.preventDefault()}
-          >
+        <FadeIn className="p-6 bg-white border shadow-sm rounded-2xl border-border md:p-10">
+          <form className="grid gap-5" onSubmit={handleSubmit}>
             <div className="grid gap-5 md:grid-cols-2">
               <div className="grid gap-1.5">
                 <label htmlFor="app-name" className="text-sm font-medium">

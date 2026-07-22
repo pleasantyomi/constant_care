@@ -1,10 +1,12 @@
+import { asc, eq } from "drizzle-orm";
 import AccentDash from "@/components/animations/accent-dash";
 import FadeIn from "@/components/animations/fade-in";
 import StaggerChildren from "@/components/animations/stagger-children";
+import { db, schema } from "@/lib/db";
 
-// Once we're operating and have real numbers to share (clients served,
-// satisfaction, partnerships, response times), this is the natural place
-// for a stat-tile row — swap the moments list below for that when ready.
+// Qualitative fallback shown until real numbers exist to publish — add
+// stats from /admin/impact and this section switches to the stat grid
+// automatically.
 const moments = [
   "Every individual who gains confidence.",
   "Every family that finds peace of mind.",
@@ -13,7 +15,15 @@ const moments = [
   "Every opportunity created.",
 ];
 
-export default function Impact() {
+export default async function Impact() {
+  const stats = db
+    ? await db
+        .select()
+        .from(schema.impactStats)
+        .where(eq(schema.impactStats.isActive, true))
+        .orderBy(asc(schema.impactStats.displayOrder))
+    : [];
+
   return (
     <section className="py-14 bg-white md:py-20">
       <div className="w-11/12 max-w-3xl mx-auto text-center">
@@ -31,16 +41,31 @@ export default function Impact() {
           </p>
         </FadeIn>
 
-        <StaggerChildren className="grid gap-3 mt-8">
-          {moments.map((moment) => (
-            <p
-              key={moment}
-              className="text-base font-medium md:text-lg text-primary"
-            >
-              {moment}
-            </p>
-          ))}
-        </StaggerChildren>
+        {stats.length > 0 ? (
+          <StaggerChildren className="grid grid-cols-2 gap-6 mt-10 sm:grid-cols-4">
+            {stats.map((stat) => (
+              <div key={stat.id}>
+                <p className="text-3xl font-bold md:text-4xl text-primary">
+                  {stat.value}
+                </p>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </StaggerChildren>
+        ) : (
+          <StaggerChildren className="grid gap-3 mt-8">
+            {moments.map((moment) => (
+              <p
+                key={moment}
+                className="text-base font-medium md:text-lg text-primary"
+              >
+                {moment}
+              </p>
+            ))}
+          </StaggerChildren>
+        )}
 
         <FadeIn>
           <p className="mt-8 text-sm leading-relaxed text-muted-foreground">
