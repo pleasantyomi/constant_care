@@ -153,7 +153,7 @@ export const metadata: Metadata = {
         url: "/og_image.jpg",
         width: 1200,
         height: 630,
-        alt: "A caregiver and client sharing a warm moment at home",
+        alt: "Constant Care Family servies Inc",
       },
     ],
   },
