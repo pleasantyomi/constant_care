@@ -5,6 +5,7 @@ import FadeIn from "@/components/animations/fade-in";
 import WhoWeServe from "@/components/landing_page/whoWeServe";
 import Testimonials from "@/components/landing_page/testimonials";
 import Outro from "@/components/landing_page/outro";
+import FoundersLetter from "@/components/landing_page/founders-letter";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
           <Testimonials />
         </FadeIn>
         <Outro />
+        <FoundersLetter />
         <CTA />
       </div>
     </div>

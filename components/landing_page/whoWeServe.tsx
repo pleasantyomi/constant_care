@@ -20,15 +20,15 @@ export default function WhoWeServe() {
       pullQuoteAttribution: "The Constant Care Team",
     },
     {
-      slug: "adults-with-disabilities",
-      title: "Adults with Disabilities",
+      slug: "everyone-with-disabilities",
+      title: "Everyone with Disabilities",
       image: "/images/adults.jpeg",
       imageAlt:
-        "A support worker and adult client collaborating on a community activity",
+        "A support worker and client with a disability collaborating on a community activity",
       imagePosition: "left",
       paragraphs: [
-        "Independence looks different for everyone. Our disability support services help adults build the life skills, community connections, and confidence they need to live as independently as possible, on their own terms.",
-        "From personal support to employment readiness, every plan starts with the individual's own goals — not a one-size-fits-all program.",
+        "Independence looks different for everyone. Our disability support services help children, youth, and adults build the life skills, community connections, and confidence they need to live as independently as possible, on their own terms.",
+        "From personal support to employment readiness, every plan starts with the individual's own goals — not a one-size-fits-all program, whatever their age or diagnosis.",
       ],
       pullQuote: "Support should open doors, not set limits.",
       pullQuoteAttribution: "The Constant Care Team",

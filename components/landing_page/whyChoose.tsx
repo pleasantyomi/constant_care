@@ -11,7 +11,7 @@ import {
   ClipboardList,
   Clock,
   Users,
-  Home,
+  UserRound,
   ShieldCheck,
 } from "lucide-react";
 import {
@@ -51,10 +51,10 @@ const content = [
       "We meet people where they are, whether that's at home, in the community, or somewhere in between. Our services are built to fit into real life, not the other way around.",
   },
   {
-    icon: Home,
-    title: "Family-Centred Care",
+    icon: UserRound,
+    title: "Person-Centered Care",
     description:
-      "We work alongside families, not around them, keeping everyone informed and involved in the care journey. Families are treated as true partners in every decision we make.",
+      "Every plan starts with the individual — their goals, preferences, and pace — not a one-size-fits-all program. We keep families and loved ones informed and involved every step of the way, because real care puts the person at the centre and treats everyone around them as a partner.",
   },
   {
     icon: ShieldCheck,
