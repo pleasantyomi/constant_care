@@ -23,7 +23,11 @@ const links = [
   { href: "/admin/subscribers", label: "Subscribers", icon: Users },
 ];
 
-export default function SidebarNav() {
+export default function SidebarNav({
+  onNavigate,
+}: {
+  onNavigate?: () => void;
+}) {
   const pathname = usePathname();
 
   return (
@@ -37,6 +41,7 @@ export default function SidebarNav() {
           <Link
             key={link.href}
             href={link.href}
+            onClick={onNavigate}
             className={cn(
               "flex items-center gap-2.5 rounded-md px-3 py-2 text-sm transition-colors",
               isActive

@@ -26,53 +26,57 @@ export default async function ApplicationsPage() {
             No applications yet.
           </p>
         ) : (
-          <table className="w-full text-sm">
-            <thead className="text-xs uppercase border-b bg-secondary/40 text-muted-foreground">
-              <tr>
-                <th className="px-4 py-3 text-left">Name</th>
-                <th className="px-4 py-3 text-left">Position</th>
-                <th className="px-4 py-3 text-left">Resume</th>
-                <th className="px-4 py-3 text-left">Received</th>
-                <th className="px-4 py-3 text-left">Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {applications.map((application) => (
-                <tr
-                  key={application.id}
-                  className="border-b border-border last:border-0 hover:bg-secondary/20"
-                >
-                  <td className="px-4 py-3">
-                    <Link
-                      href={`/admin/applications/${application.id}`}
-                      className="font-medium text-primary hover:underline"
-                    >
-                      {application.name}
-                    </Link>
-                    <p className="text-xs text-muted-foreground">
-                      {application.email}
-                    </p>
-                  </td>
-                  <td className="px-4 py-3 text-muted-foreground">
-                    {application.position || "—"}
-                  </td>
-                  <td className="px-4 py-3">
-                    {application.resumeUrl ? (
-                      <span className="text-xs text-accent">Attached</span>
-                    ) : (
-                      <span className="text-xs text-muted-foreground">—</span>
-                    )}
-                  </td>
-                  <td className="px-4 py-3 text-muted-foreground">
-                    {application.createdAt.toLocaleDateString()}
-                  </td>
-                  <td className="px-4 py-3">
-                    <StatusBadge status={application.status} />
-                  </td>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="text-xs uppercase border-b bg-secondary/40 text-muted-foreground">
+                <tr>
+                  <th className="px-4 py-3 text-left">Name</th>
+                  <th className="px-4 py-3 text-left">Position</th>
+                  <th className="px-4 py-3 text-left">Resume</th>
+                  <th className="px-4 py-3 text-left">Received</th>
+                  <th className="px-4 py-3 text-left">Status</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {applications.map((application) => (
+                  <tr
+                    key={application.id}
+                    className="border-b border-border last:border-0 hover:bg-secondary/20"
+                  >
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      <Link
+                        href={`/admin/applications/${application.id}`}
+                        className="font-medium text-primary hover:underline"
+                      >
+                        {application.name}
+                      </Link>
+                      <p className="text-xs text-muted-foreground">
+                        {application.email}
+                      </p>
+                    </td>
+                    <td className="px-4 py-3 text-muted-foreground whitespace-nowrap">
+                      {application.position || "—"}
+                    </td>
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      {application.resumeUrl ? (
+                        <span className="text-xs text-accent">Attached</span>
+                      ) : (
+                        <span className="text-xs text-muted-foreground">
+                          —
+                        </span>
+                      )}
+                    </td>
+                    <td className="px-4 py-3 text-muted-foreground whitespace-nowrap">
+                      {application.createdAt.toLocaleDateString()}
+                    </td>
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      <StatusBadge status={application.status} />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     </div>

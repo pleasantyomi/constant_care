@@ -26,45 +26,47 @@ export default async function MessagesPage() {
             No messages yet.
           </p>
         ) : (
-          <table className="w-full text-sm">
-            <thead className="text-xs uppercase border-b bg-secondary/40 text-muted-foreground">
-              <tr>
-                <th className="px-4 py-3 text-left">Name</th>
-                <th className="px-4 py-3 text-left">Regarding</th>
-                <th className="px-4 py-3 text-left">Received</th>
-                <th className="px-4 py-3 text-left">Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {messages.map((message) => (
-                <tr
-                  key={message.id}
-                  className="border-b border-border last:border-0 hover:bg-secondary/20"
-                >
-                  <td className="px-4 py-3">
-                    <Link
-                      href={`/admin/messages/${message.id}`}
-                      className="font-medium text-primary hover:underline"
-                    >
-                      {message.name}
-                    </Link>
-                    <p className="text-xs text-muted-foreground">
-                      {message.email}
-                    </p>
-                  </td>
-                  <td className="px-4 py-3 text-muted-foreground">
-                    {message.service || "General Inquiry"}
-                  </td>
-                  <td className="px-4 py-3 text-muted-foreground">
-                    {message.createdAt.toLocaleDateString()}
-                  </td>
-                  <td className="px-4 py-3">
-                    <StatusBadge status={message.status} />
-                  </td>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="text-xs uppercase border-b bg-secondary/40 text-muted-foreground">
+                <tr>
+                  <th className="px-4 py-3 text-left">Name</th>
+                  <th className="px-4 py-3 text-left">Regarding</th>
+                  <th className="px-4 py-3 text-left">Received</th>
+                  <th className="px-4 py-3 text-left">Status</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {messages.map((message) => (
+                  <tr
+                    key={message.id}
+                    className="border-b border-border last:border-0 hover:bg-secondary/20"
+                  >
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      <Link
+                        href={`/admin/messages/${message.id}`}
+                        className="font-medium text-primary hover:underline"
+                      >
+                        {message.name}
+                      </Link>
+                      <p className="text-xs text-muted-foreground">
+                        {message.email}
+                      </p>
+                    </td>
+                    <td className="px-4 py-3 text-muted-foreground whitespace-nowrap">
+                      {message.service || "General Inquiry"}
+                    </td>
+                    <td className="px-4 py-3 text-muted-foreground whitespace-nowrap">
+                      {message.createdAt.toLocaleDateString()}
+                    </td>
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      <StatusBadge status={message.status} />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     </div>

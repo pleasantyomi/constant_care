@@ -26,47 +26,51 @@ export default async function ReferralsPage() {
             No referrals yet.
           </p>
         ) : (
-          <table className="w-full text-sm">
-            <thead className="text-xs uppercase border-b bg-secondary/40 text-muted-foreground">
-              <tr>
-                <th className="px-4 py-3 text-left">Client</th>
-                <th className="px-4 py-3 text-left">Referrer</th>
-                <th className="px-4 py-3 text-left">Urgency</th>
-                <th className="px-4 py-3 text-left">Received</th>
-                <th className="px-4 py-3 text-left">Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {referrals.map((referral) => (
-                <tr
-                  key={referral.id}
-                  className="border-b border-border last:border-0 hover:bg-secondary/20"
-                >
-                  <td className="px-4 py-3">
-                    <Link
-                      href={`/admin/referrals/${referral.id}`}
-                      className="font-medium text-primary hover:underline"
-                    >
-                      {referral.clientName}
-                    </Link>
-                  </td>
-                  <td className="px-4 py-3 text-muted-foreground">
-                    {referral.referrerName}
-                    <p className="text-xs">{referral.referrerRelationship}</p>
-                  </td>
-                  <td className="px-4 py-3">
-                    <StatusBadge status={referral.urgency} />
-                  </td>
-                  <td className="px-4 py-3 text-muted-foreground">
-                    {referral.createdAt.toLocaleDateString()}
-                  </td>
-                  <td className="px-4 py-3">
-                    <StatusBadge status={referral.status} />
-                  </td>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="text-xs uppercase border-b bg-secondary/40 text-muted-foreground">
+                <tr>
+                  <th className="px-4 py-3 text-left">Client</th>
+                  <th className="px-4 py-3 text-left">Referrer</th>
+                  <th className="px-4 py-3 text-left">Urgency</th>
+                  <th className="px-4 py-3 text-left">Received</th>
+                  <th className="px-4 py-3 text-left">Status</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {referrals.map((referral) => (
+                  <tr
+                    key={referral.id}
+                    className="border-b border-border last:border-0 hover:bg-secondary/20"
+                  >
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      <Link
+                        href={`/admin/referrals/${referral.id}`}
+                        className="font-medium text-primary hover:underline"
+                      >
+                        {referral.clientName}
+                      </Link>
+                    </td>
+                    <td className="px-4 py-3 text-muted-foreground whitespace-nowrap">
+                      {referral.referrerName}
+                      <p className="text-xs">
+                        {referral.referrerRelationship}
+                      </p>
+                    </td>
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      <StatusBadge status={referral.urgency} />
+                    </td>
+                    <td className="px-4 py-3 text-muted-foreground whitespace-nowrap">
+                      {referral.createdAt.toLocaleDateString()}
+                    </td>
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      <StatusBadge status={referral.status} />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     </div>

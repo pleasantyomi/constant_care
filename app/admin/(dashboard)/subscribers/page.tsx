@@ -26,27 +26,31 @@ export default async function SubscribersPage() {
             No subscribers yet.
           </p>
         ) : (
-          <table className="w-full text-sm">
-            <thead className="text-xs uppercase border-b bg-secondary/40 text-muted-foreground">
-              <tr>
-                <th className="px-4 py-3 text-left">Email</th>
-                <th className="px-4 py-3 text-left">Subscribed</th>
-              </tr>
-            </thead>
-            <tbody>
-              {subscribers.map((subscriber) => (
-                <tr
-                  key={subscriber.id}
-                  className="border-b border-border last:border-0"
-                >
-                  <td className="px-4 py-3">{subscriber.email}</td>
-                  <td className="px-4 py-3 text-muted-foreground">
-                    {subscriber.subscribedAt.toLocaleDateString()}
-                  </td>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="text-xs uppercase border-b bg-secondary/40 text-muted-foreground">
+                <tr>
+                  <th className="px-4 py-3 text-left">Email</th>
+                  <th className="px-4 py-3 text-left">Subscribed</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {subscribers.map((subscriber) => (
+                  <tr
+                    key={subscriber.id}
+                    className="border-b border-border last:border-0"
+                  >
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      {subscriber.email}
+                    </td>
+                    <td className="px-4 py-3 text-muted-foreground whitespace-nowrap">
+                      {subscriber.subscribedAt.toLocaleDateString()}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     </div>
