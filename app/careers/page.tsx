@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Background from "@/components/shared/background";
 import WhyWorkWithUs from "@/components/careers/why-work-with-us";
 import Certifications from "@/components/careers/certifications";
@@ -7,6 +8,13 @@ import ApplicationForm from "@/components/careers/application-form";
 // Current Openings reads from the database — force dynamic rendering so
 // admin edits show up immediately instead of waiting for a redeploy.
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Careers",
+  description:
+    "Join Constant Care Family Services Inc. — explore current openings and build a career supporting individuals and families across New Brunswick.",
+  alternates: { canonical: "/careers" },
+};
 
 export default function Careers() {
   return (

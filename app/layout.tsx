@@ -6,6 +6,7 @@ import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import ScrollToTop from "@/components/shared/scroll-to-top";
 import ScrollTriggerRefresh from "@/components/shared/scroll-trigger-refresh";
+import StructuredData from "@/components/shared/structured-data";
 import { Analytics } from "@vercel/analytics/next";
 
 const helveticaNeue = localFont({
@@ -190,6 +191,7 @@ export default function RootLayout({
       )}
     >
       <body className="flex flex-col min-h-full">
+        <StructuredData />
         <ScrollToTop />
         <ScrollTriggerRefresh />
         <Header />

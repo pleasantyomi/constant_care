@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import Background from "@/components/shared/background";
 import WhoCanRefer from "@/components/referrals/who-can-refer";
 import ReferralForm from "@/components/referrals/referral-form";
+
+export const metadata: Metadata = {
+  title: "Refer a Client",
+  description:
+    "Refer a client to Constant Care Family Services Inc. We welcome referrals from families, professionals, and community partners across New Brunswick.",
+  alternates: { canonical: "/referrals" },
+};
 
 export default function Referrals() {
   return (

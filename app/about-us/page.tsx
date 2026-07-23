@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Hero from "@/components/about-us/hero";
 import WhoWeAre from "@/components/about-us/who-we-are";
 import WhyWeExist from "@/components/about-us/why-we-exist";
@@ -18,6 +19,13 @@ import FinalCta from "@/components/about-us/final-cta";
 // Impact reads from the database — force dynamic rendering so admin-added
 // stats show up immediately instead of waiting for a redeploy.
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "Learn about Constant Care Family Services Inc. — our mission, values, and commitment to person-centred, community-based care across New Brunswick.",
+  alternates: { canonical: "/about-us" },
+};
 
 export default function About() {
   return (

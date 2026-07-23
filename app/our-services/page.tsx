@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import Background from "@/components/shared/background";
 import Image from "next/image";
 import Services from "@/components/services/services";
 import FadeIn from "@/components/animations/fade-in";
+
+export const metadata: Metadata = {
+  title: "Our Services",
+  description:
+    "Explore home care, disability support, youth, senior, respite, residential, and family services from Constant Care Family Services Inc. across New Brunswick.",
+  alternates: { canonical: "/our-services" },
+};
 
 export default function OurServices() {
   return (
