@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -61,24 +62,31 @@ export default function Form() {
     }
   }
 
+  // Only accounts with a real URL render — a dead "#" link would be worse
+  // than omitting the icon (e.g. no TikTok profile exists yet).
   const socials = [
     {
       icon: <FaFacebook size="20" />,
       name: "Facebook",
+      link: "https://www.facebook.com/share/1Jzmfyp1FW/",
     },
     {
       icon: <FaInstagram size="20" />,
       name: "Instagram",
+      link: "https://www.instagram.com/constantcarefamilyservices/",
     },
     {
-      icon: <FaXTwitter size="20" />,
-      name: "Twitter",
+      icon: <FaLinkedinIn size="20" />,
+      name: "LinkedIn",
+      link: "https://www.linkedin.com/company/constant-care-family-servicess/",
     },
     {
       icon: <FaTiktok size="20" />,
       name: "Tiktok",
     },
-  ];
+  ].filter((social): social is typeof social & { link: string } =>
+    Boolean(social.link),
+  );
   return (
     <section className="grid w-11/12 gap-16 mx-auto md:gap-8 lg:gap-16 md:w-11/12 lg:w-10/12 lg:grid-cols-5 md:grid-cols-5">
       <div className="relative grid p-6 space-y-6 overflow-hidden text-sm font-normal text-left text-white md:space-y-0 md:col-span-2 bg-primary h-stretch rounded-2xl">
@@ -112,14 +120,15 @@ export default function Form() {
           <div>
             <div className="flex gap-2">
               {socials.map((social) => (
-                <div
+                <Link
+                  href={social.link}
                   key={social.name}
                   className="relative w-12 h-12 rounded-full md:w-10 md:h-10 lg:w-12 lg:h-12 bg-accent"
                 >
                   <span className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                     {social.icon}
                   </span>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

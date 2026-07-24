@@ -117,6 +117,8 @@ export const metadata: Metadata = {
     "person-centred care",
     "New Brunswick care services",
     "Constant Care Family Services",
+    "Constant care",
+    "Constant Care Family Services Inc.",
   ],
   authors: [{ name: siteName }],
   creator: siteName,

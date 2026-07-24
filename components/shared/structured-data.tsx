@@ -36,6 +36,14 @@ export default function StructuredData() {
       opens: "08:00",
       closes: "17:30",
     },
+    // Tells Google these profiles and this site describe the same
+    // business — helps disambiguate from unrelated companies that share
+    // part of the name.
+    sameAs: [
+      "https://www.facebook.com/share/1Jzmfyp1FW/",
+      "https://www.instagram.com/constantcarefamilyservices/",
+      "https://www.linkedin.com/company/constant-care-family-servicess/",
+    ],
   };
 
   return (
