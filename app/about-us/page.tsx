@@ -23,7 +23,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about Constant Care Family Services Inc. — our mission, values, and commitment to person-centred, community-based care across New Brunswick.",
+    "Learn about Constant Care Family Services Inc.: our mission, values, and commitment to person-centred, community-based care across New Brunswick.",
   alternates: { canonical: "/about-us" },
 };
 

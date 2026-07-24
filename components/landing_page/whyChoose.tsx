@@ -54,7 +54,7 @@ const content = [
     icon: UserRound,
     title: "Person-Centered Care",
     description:
-      "Every plan starts with the individual — their goals, preferences, and pace — not a one-size-fits-all program. We keep families and loved ones informed and involved every step of the way, because real care puts the person at the centre and treats everyone around them as a partner.",
+      "Every plan starts with the individual: their goals, preferences, and pace, not a one-size-fits-all program. We keep families and loved ones informed and involved every step of the way, because real care puts the person at the centre and treats everyone around them as a partner.",
   },
   {
     icon: ShieldCheck,

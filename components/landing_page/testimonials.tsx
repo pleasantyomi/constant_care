@@ -36,7 +36,7 @@ const testimonials = [
   {
     id: "t3",
     quote:
-      "Respite care used to feel like an impossible ask. Constant Care made it simple — flexible scheduling that actually works around our family's life, not the other way around.",
+      "Respite care used to feel like an impossible ask. Constant Care made it simple: flexible scheduling that actually works around our family's life, not the other way around.",
     name: "Angela R.",
     role: "Family Caregiver",
     rating: 5,

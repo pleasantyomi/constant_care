@@ -21,7 +21,7 @@ const features: {
     icon: UserCheck,
     title: "Personalized Support",
     description:
-      "Every care plan is designed around the individual—not a standard checklist.",
+      "Every care plan is designed around the individual, not a standard checklist.",
   },
   {
     icon: GraduationCap,
@@ -45,7 +45,7 @@ const features: {
     icon: Sparkles,
     title: "Holistic Care",
     description:
-      "We focus on emotional, physical, social, and personal well-being—not just daily tasks.",
+      "We focus on emotional, physical, social, and personal well-being, not just daily tasks.",
   },
   {
     icon: ShieldCheck,

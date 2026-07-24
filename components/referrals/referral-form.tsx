@@ -90,7 +90,7 @@ export default function ReferralForm() {
           </h1>
           <AccentDash className="w-2/12 mx-auto mt-2 origin-center md:mt-3 md:w-1/12 border-primary" />
           <p className="max-w-lg mx-auto mt-4 text-sm leading-relaxed text-muted-foreground">
-            Please share as much detail as you can — it helps us respond
+            Please share as much detail as you can: it helps us respond
             quickly and match the right support.
           </p>
         </FadeIn>
@@ -273,7 +273,7 @@ export default function ReferralForm() {
               </Button>
               {status === "sent" && (
                 <p className="mt-3 text-sm text-accent">
-                  Thank you — we&rsquo;ve received the referral and will
+                  Thank you! We&rsquo;ve received the referral and will
                   follow up promptly.
                 </p>
               )}

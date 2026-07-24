@@ -18,7 +18,7 @@ const cards = [
     heading: "Shaping the Future of Community Care",
     paragraphs: [
       "Our vision is to become Canada's most trusted community care organization, recognized for transforming lives through innovation, leadership, and exceptional service.",
-      "We envision communities where every individual—regardless of age, ability, or circumstance—has equitable access to opportunities, compassionate support, and the resources needed to live with dignity, purpose, and confidence.",
+      "We envision communities where every individual, regardless of age, ability, or circumstance, has equitable access to opportunities, compassionate support, and the resources needed to live with dignity, purpose, and confidence.",
     ],
   },
 ];

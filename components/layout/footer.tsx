@@ -120,7 +120,7 @@ export default function Footer() {
             </p>
             {status === "sent" ? (
               <p className="mt-4 text-sm text-accent">
-                Thanks — you&rsquo;re on the list.
+                Thanks! You&rsquo;re on the list.
               </p>
             ) : (
               <form className="flex gap-2 mt-4" onSubmit={handleSubscribe}>
@@ -148,7 +148,7 @@ export default function Footer() {
             )}
             {status === "error" && (
               <p className="mt-2 text-xs text-white/60">
-                Something went wrong — please try again.
+                Something went wrong. Please try again.
               </p>
             )}
           </div>

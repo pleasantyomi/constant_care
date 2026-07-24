@@ -39,7 +39,7 @@ export default function FoundersLetter() {
 
             <p>
               We founded Constant Care because we believe care has the power
-              to change lives&mdash;not only through the services we provide,
+              to change lives, not only through the services we provide,
               but through the hope we restore, the confidence we build, and
               the futures we help shape. Our vision has always been greater
               than providing support; it is about creating opportunities,
@@ -62,8 +62,8 @@ export default function FoundersLetter() {
             </p>
 
             <p>
-              We believe every individual&mdash;regardless of age, ability,
-              background, culture, or life circumstance&mdash;deserves the
+              We believe every individual, regardless of age, ability,
+              background, culture, or life circumstance, deserves the
               opportunity to live with dignity, purpose, and belonging. Our
               role is not to walk ahead of those we serve or behind them, but
               beside them, offering encouragement, guidance, and unwavering
@@ -102,7 +102,7 @@ export default function FoundersLetter() {
 
             <p className="font-medium text-foreground">
               Because at Constant Care, we believe care is not just about
-              meeting today&rsquo;s needs&mdash;it is about creating
+              meeting today&rsquo;s needs: it is about creating
               tomorrow&rsquo;s possibilities.
             </p>
           </div>

@@ -235,7 +235,7 @@ export default function Form() {
             </Button>
             {status === "sent" && (
               <p className="mt-3 text-sm text-accent">
-                Thanks — we&rsquo;ve received your message and will be in touch
+                Thanks! We&rsquo;ve received your message and will be in touch
                 soon.
               </p>
             )}

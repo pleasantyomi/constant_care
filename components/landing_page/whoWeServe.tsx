@@ -14,7 +14,7 @@ export default function WhoWeServe() {
       imagePosition: "right",
       paragraphs: [
         "Independence looks different for everyone. Our disability support services help children, youth, and adults build the life skills, community connections, and confidence they need to live as independently as possible, on their own terms.",
-        "From personal support to employment readiness, every plan starts with the individual's own goals — not a one-size-fits-all program, whatever their age or diagnosis.",
+        "From personal support to employment readiness, every plan starts with the individual's own goals, not a one-size-fits-all program, whatever their age or diagnosis.",
       ],
       pullQuote: "Support should open doors, not set limits.",
       pullQuoteAttribution: "The Constant Care Team",
@@ -27,7 +27,7 @@ export default function WhoWeServe() {
         "A senior enjoying tea with a caregiver in a bright living room",
       imagePosition: "left", // alternates per item, see map below
       paragraphs: [
-        "Aging at home shouldn't mean losing independence. Our senior support services help older adults stay safe, comfortable, and connected — from companionship and wellness visits to meal preparation and transportation to the places that matter.",
+        "Aging at home shouldn't mean losing independence. Our senior support services help older adults stay safe, comfortable, and connected, from companionship and wellness visits to meal preparation and transportation to the places that matter.",
         "We build every visit around dignity first. Our support workers get to know each senior's routines, preferences, and pace, so care feels less like a service and more like a trusted relationship.",
       ],
       pullQuote: "Every senior deserves to feel at home, in their home.",
@@ -67,7 +67,7 @@ export default function WhoWeServe() {
       imageAlt: "A multigenerational family relaxed together at home",
       imagePosition: "right",
       paragraphs: [
-        "Caregiving is demanding, and no one should have to carry it alone. Our respite and family services give caregivers real relief — in-home, in the community, or on a flexible schedule that works for your family.",
+        "Caregiving is demanding, and no one should have to carry it alone. Our respite and family services give caregivers real relief: in-home, in the community, or on a flexible schedule that works for your family.",
         "Beyond respite, our family navigation and advocacy services help families find their way through a complicated system with someone in their corner.",
       ],
       pullQuote: "When we support the caregiver, the whole family benefits.",
@@ -80,7 +80,7 @@ export default function WhoWeServe() {
       imageAlt: "A small group at a community activity",
       imagePosition: "left",
       paragraphs: [
-        "Not everyone needs full-time care — some just need dependable support to stay active and connected. Our community-based services help individuals get to appointments, run errands, and take part in community life.",
+        "Not everyone needs full-time care. Some just need dependable support to stay active and connected. Our community-based services help individuals get to appointments, run errands, and take part in community life.",
         "Whether it's a weekly outing or occasional support, we meet people exactly where they are, on their schedule.",
       ],
       pullQuote: "Community support should never feel like a burden.",

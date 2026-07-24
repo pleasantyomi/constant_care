@@ -21,7 +21,7 @@ export default function WhyWeExist() {
           personalized support they deserve.
         </p>
         <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-          We believe care should do more than respond to challenges—it
+          We believe care should do more than respond to challenges: it
           should create opportunities.
         </p>
         <p className="mt-4 text-base font-medium leading-relaxed text-primary">

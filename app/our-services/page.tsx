@@ -32,7 +32,7 @@ export default function OurServices() {
         <p className="grid w-full gap-3 pt-2 mx-auto text-center lg:w-8/12 md:w-9/12">
           <span>
             From home care to residential support, our services are built around
-            the people we serve — coordinated, consistent, and delivered with
+            the people we serve: coordinated, consistent, and delivered with
             dignity
           </span>
         </p>

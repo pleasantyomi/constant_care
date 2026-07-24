@@ -49,7 +49,7 @@ export default async function CurrentOpenings() {
               <Briefcase className="w-7 h-7 text-accent" aria-hidden />
             </span>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              We don&rsquo;t have any open positions right now — check back
+              We don&rsquo;t have any open positions right now. Check back
               soon, or submit your resume below and we&rsquo;ll reach out
               when a role opens up.
             </p>

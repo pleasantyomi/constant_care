@@ -10,7 +10,7 @@ export const trustIntro = {
   headingLine2: "to deliver compassionate, coordinated care.",
   highlightPhrase: "dedicated, trained support",
   paragraph:
-    "We add {highlight} to every family we work with. Our value isn't limited to a single visit — it's in the consistency, coordination, and follow-through across the whole care journey. We're a person-centred care organization that stands behind every plan we build.",
+    "We add {highlight} to every family we work with. Our value isn't limited to a single visit: it's in the consistency, coordination, and follow-through across the whole care journey. We're a person-centred care organization that stands behind every plan we build.",
   linkText: "Learn Our Story",
   linkHref: "/about-us",
   image: {

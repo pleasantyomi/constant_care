@@ -12,7 +12,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Careers",
   description:
-    "Join Constant Care Family Services Inc. — explore current openings and build a career supporting individuals and families across New Brunswick.",
+    "Join Constant Care Family Services Inc. Explore current openings and build a career supporting individuals and families across New Brunswick.",
   alternates: { canonical: "/careers" },
 };
 

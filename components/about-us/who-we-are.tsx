@@ -20,7 +20,7 @@ export default function WhoWeAre() {
             organization dedicated to delivering exceptional support that
             empowers individuals to thrive. We believe every person deserves
             the opportunity to live safely, independently, and with
-            dignity—regardless of age, ability, or circumstance.
+            dignity, regardless of age, ability, or circumstance.
           </p>
           <p className="text-sm leading-relaxed text-muted-foreground">
             Our team provides personalized services built around each

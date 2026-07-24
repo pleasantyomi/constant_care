@@ -72,7 +72,7 @@ export default function Header() {
       )}
     >
       <div className="flex items-center justify-between w-11/12 mx-auto">
-        <Link href="/" aria-label="Constant Care Family Services — Home">
+        <Link href="/" aria-label="Constant Care Family Services, Home">
           <Image
             src="/logo/CCFSI_ICON_B.png"
             alt="Constant Care Family Services logo"

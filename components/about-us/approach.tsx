@@ -19,7 +19,7 @@ const steps: {
     icon: ClipboardList,
     title: "Build the Plan",
     description:
-      "Together we create a personalized care plan around the individual's goals, routines, and preferences — never a one-size-fits-all program.",
+      "Together we create a personalized care plan around the individual's goals, routines, and preferences, never a one-size-fits-all program.",
   },
   {
     icon: HeartHandshake,
