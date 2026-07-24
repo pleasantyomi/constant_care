@@ -6,31 +6,31 @@ import { cn } from "@/lib/utils";
 export default function WhoWeServe() {
   const whoWeServe = [
     {
-      slug: "seniors",
-      title: "Seniors",
-      image: "/images/senior.jpeg",
-      imageAlt:
-        "A senior enjoying tea with a caregiver in a bright living room",
-      imagePosition: "right", // alternates per item, see map below
-      paragraphs: [
-        "Aging at home shouldn't mean losing independence. Our senior support services help older adults stay safe, comfortable, and connected — from companionship and wellness visits to meal preparation and transportation to the places that matter.",
-        "We build every visit around dignity first. Our support workers get to know each senior's routines, preferences, and pace, so care feels less like a service and more like a trusted relationship.",
-      ],
-      pullQuote: "Every senior deserves to feel at home, in their home.",
-      pullQuoteAttribution: "The Constant Care Team",
-    },
-    {
       slug: "everyone-with-disabilities",
       title: "Everyone with Disabilities",
       image: "/images/adults.jpeg",
       imageAlt:
         "A support worker and client with a disability collaborating on a community activity",
-      imagePosition: "left",
+      imagePosition: "right",
       paragraphs: [
         "Independence looks different for everyone. Our disability support services help children, youth, and adults build the life skills, community connections, and confidence they need to live as independently as possible, on their own terms.",
         "From personal support to employment readiness, every plan starts with the individual's own goals — not a one-size-fits-all program, whatever their age or diagnosis.",
       ],
       pullQuote: "Support should open doors, not set limits.",
+      pullQuoteAttribution: "The Constant Care Team",
+    },
+    {
+      slug: "seniors",
+      title: "Seniors",
+      image: "/images/senior.jpeg",
+      imageAlt:
+        "A senior enjoying tea with a caregiver in a bright living room",
+      imagePosition: "left", // alternates per item, see map below
+      paragraphs: [
+        "Aging at home shouldn't mean losing independence. Our senior support services help older adults stay safe, comfortable, and connected — from companionship and wellness visits to meal preparation and transportation to the places that matter.",
+        "We build every visit around dignity first. Our support workers get to know each senior's routines, preferences, and pace, so care feels less like a service and more like a trusted relationship.",
+      ],
+      pullQuote: "Every senior deserves to feel at home, in their home.",
       pullQuoteAttribution: "The Constant Care Team",
     },
     {
