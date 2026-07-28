@@ -87,7 +87,7 @@ export default function Footer() {
 
           <div>
             <h2 className="text-sm font-semibold tracking-wide uppercase">
-              Our Services
+              How We Support You
             </h2>
             <AccentDash className="w-8 mt-2" />
             <ul className="mt-4 space-y-2">

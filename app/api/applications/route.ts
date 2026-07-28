@@ -14,6 +14,35 @@ const ALLOWED_TYPES = [
   "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 ];
 
+// Some browsers hand back multipart filenames with characters (spaces,
+// unicode) already percent-encoded as literal text — e.g. "resume%20.pdf"
+// instead of "resume .pdf". Using that raw string as part of a Blob
+// pathname causes the SDK to encode it *again* when building the blob's
+// URL, so the resulting URL doesn't match what get() looks up and
+// downloads fail with "not found" even though the file exists. Stripping
+// to a safe character set for the storage key sidesteps the whole
+// encoding question; the original filename is preserved separately for
+// the download's Content-Disposition header.
+function sanitizeFilenameForPathname(name: string) {
+  return (
+    name
+      .normalize("NFKD")
+      .replace(/[^\w.-]+/g, "-")
+      .replace(/-+/g, "-") || "resume"
+  );
+}
+
+// The display name (used in the download's Content-Disposition header)
+// should show the human-readable filename rather than the raw
+// pre-encoded string, so decode it back to a normal string where possible.
+function decodeDisplayFilename(name: string) {
+  try {
+    return decodeURIComponent(name);
+  } catch {
+    return name;
+  }
+}
+
 export async function POST(request: Request) {
   if (!db) {
     return NextResponse.json(
@@ -69,11 +98,12 @@ export async function POST(request: Request) {
       );
     }
 
-    const blob = await put(`resumes/${Date.now()}-${resume.name}`, resume, {
+    const safeName = sanitizeFilenameForPathname(resume.name);
+    const blob = await put(`resumes/${Date.now()}-${safeName}`, resume, {
       access: "private",
     });
     resumePathname = blob.pathname;
-    resumeFilename = resume.name;
+    resumeFilename = decodeDisplayFilename(resume.name);
   }
 
   await db.insert(schema.applications).values({

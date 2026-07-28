@@ -85,7 +85,7 @@ export default function Header() {
         {/* Desktop navigation */}
         <nav className="items-center hidden md:hidden gap-8 text-sm lg:flex">
           {mainNav.map((link) =>
-            link.label === "Our Services" ? (
+            link.href === "/our-services" ? (
               <div
                 key={link.label}
                 ref={servicesRef}
@@ -164,7 +164,7 @@ export default function Header() {
         <nav className="absolute left-0 w-full bg-white border-t shadow-md lg:hidden top-full border-border animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="flex flex-col w-11/12 py-3 mx-auto text-sm">
             {mainNav.map((link) =>
-              link.label === "Our Services" ? (
+              link.href === "/our-services" ? (
                 <div key={link.label}>
                   <div className="flex items-center justify-between">
                     <Link

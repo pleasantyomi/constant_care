@@ -61,9 +61,7 @@ export default async function ApplicationsPage() {
                       {application.resumeUrl ? (
                         <span className="text-xs text-accent">Attached</span>
                       ) : (
-                        <span className="text-xs text-muted-foreground">
-                          —
-                        </span>
+                        <span className="text-xs text-muted-foreground">—</span>
                       )}
                     </td>
                     <td className="px-4 py-3 text-muted-foreground whitespace-nowrap">

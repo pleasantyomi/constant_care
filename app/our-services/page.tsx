@@ -5,16 +5,16 @@ import Services from "@/components/services/services";
 import FadeIn from "@/components/animations/fade-in";
 
 export const metadata: Metadata = {
-  title: "Our Services",
+  title: "How We Support You",
   description:
-    "Explore home care, disability support, youth, senior, respite, residential, and family services from Constant Care Family Services Inc. across New Brunswick.",
+    "Explore Constant Care Family Services Inc.'s integrated community healthcare and support services: home care, clinical care coordination, disability and complex support, behavioural science and mental wellness, and more across New Brunswick.",
   alternates: { canonical: "/our-services" },
 };
 
 export default function OurServices() {
   return (
     <div className="overflow-x-hidden">
-      <Background>Our Services</Background>
+      <Background>How We Support You</Background>
       <FadeIn>
         <Image
           src="/images/services/Home_care_support_worker_in_202607191117_5.jpeg"
@@ -31,9 +31,9 @@ export default function OurServices() {
         </h1>
         <p className="grid w-full gap-3 pt-2 mx-auto text-center lg:w-8/12 md:w-9/12">
           <span>
-            From home care to residential support, our services are built around
-            the people we serve: coordinated, consistent, and delivered with
-            dignity
+            As an integrated community healthcare and support organization,
+            our services are built around the people we serve: coordinated,
+            clinical where it matters, and delivered with dignity
           </span>
         </p>
       </FadeIn>
