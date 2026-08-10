@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { put } from "@vercel/blob";
 import { db, schema } from "@/lib/db";
 import { applicationSchema } from "@/lib/validation";
+import { SITE_URL } from "@/lib/site";
 import {
   sendApplicationNotification,
   sendApplicationConfirmation,
@@ -106,15 +107,25 @@ export async function POST(request: Request) {
     resumeFilename = decodeDisplayFilename(resume.name);
   }
 
-  await db.insert(schema.applications).values({
-    name,
-    email,
-    phone,
-    position: position || null,
-    resumeUrl: resumePathname,
-    resumeFilename,
-    message: message || null,
-  });
+  const [application] = await db
+    .insert(schema.applications)
+    .values({
+      name,
+      email,
+      phone,
+      position: position || null,
+      resumeUrl: resumePathname,
+      resumeFilename,
+      message: message || null,
+    })
+    .returning({ id: schema.applications.id });
+
+  // Links to the authenticated admin download route rather than the resume
+  // itself — the Blob store is private, and this way the link works as
+  // long as whoever clicks it is logged into /admin in that browser.
+  const resumeDownloadUrl = resumePathname
+    ? `${SITE_URL}/api/admin/resume/${application.id}`
+    : null;
 
   try {
     await sendApplicationNotification({
@@ -122,7 +133,7 @@ export async function POST(request: Request) {
       email,
       phone,
       position,
-      resumeUrl: resumePathname ? "Attached — view in the admin panel" : null,
+      resumeUrl: resumeDownloadUrl,
       message,
     });
   } catch (error) {
