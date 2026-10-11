@@ -100,7 +100,7 @@ export default function Form() {
         <div>
           <h2 className="pb-2 text-lg font-medium">Contact</h2>
           <p className="grid lg:text-sm md:text-[12px] text-sm">
-            <Link href="tel:+15063000055">Phone: +1 (506) 300-0055</Link>
+            <Link href="tel:+15063000432">Phone: +1 (506) 300-0432</Link>
             <span>
               Email:{" "}
               <Link href="mailto:info@constantcarefamilyservices.com">
