@@ -1,9 +1,12 @@
-import { loadEnvConfig } from "@next/env";
 import { defineConfig } from "drizzle-kit";
 
-// drizzle-kit runs outside Next, so load .env.local (and friends) the same
-// way `next dev` does — otherwise DATABASE_URL is undefined here.
-loadEnvConfig(process.cwd());
+// drizzle-kit runs outside Next, so .env.local isn't loaded automatically —
+// load it here so DATABASE_URL is set for the db:* scripts. Variables already
+// in the environment take precedence, and a missing file (e.g. on Vercel,
+// where env vars come from the project settings) is fine.
+try {
+  process.loadEnvFile(".env.local");
+} catch {}
 
 export default defineConfig({
   out: "./drizzle",
