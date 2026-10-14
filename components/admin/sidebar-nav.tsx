@@ -10,6 +10,7 @@ import {
   Briefcase,
   BarChart3,
   Users,
+  UsersRound,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -20,6 +21,7 @@ const links = [
   { href: "/admin/applications", label: "Applications", icon: FileText },
   { href: "/admin/openings", label: "Job Openings", icon: Briefcase },
   { href: "/admin/impact", label: "Impact Stats", icon: BarChart3 },
+  { href: "/admin/team", label: "Team Members", icon: UsersRound },
   { href: "/admin/subscribers", label: "Subscribers", icon: Users },
 ];
 

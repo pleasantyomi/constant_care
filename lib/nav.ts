@@ -1,6 +1,7 @@
 export const mainNav = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about-us" },
+  { label: "Our Team", href: "/our-team" },
   { label: "How We Support You", href: "/our-services" },
   { label: "Careers", href: "/careers" },
   { label: "Referrals", href: "/referrals" },

@@ -19,6 +19,7 @@ export default function Background({
         src="/backgrounds/seamless_2D_vector_background_pattern_202605132350.jpeg"
         alt=""
         fill
+        loading="eager"
         aria-hidden
         className="object-cover pointer-events-none select-none opacity-40 mix-blend-multiply"
       />
