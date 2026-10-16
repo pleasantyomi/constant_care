@@ -10,16 +10,19 @@ export default function StructuredData() {
     "@type": "LocalBusiness",
     name: "Constant Care Family Services Inc.",
     description:
-      "Constant Care Family Services Inc is a modern care-centred organisation committed to delivering inclusive, person-centred support services with professionalism, compassion, and structure.",
+      "Person-centred home care and support services in Fredericton, Moncton, Miramichi, and across New Brunswick, delivered with compassion and professionalism.",
     url: SITE_URL,
     logo: `${SITE_URL}/logo/CCFSI_LOGO_A.png`,
     image: `${SITE_URL}/og_image.jpg`,
     telephone: contact.phoneSchema,
     email: contact.email,
-    areaServed: {
-      "@type": "State",
-      name: "New Brunswick",
-    },
+    // The communities served, for local search ("home care Fredericton").
+    areaServed: [
+      { "@type": "City", name: "Fredericton", containedInPlace: { "@type": "State", name: "New Brunswick" } },
+      { "@type": "City", name: "Moncton", containedInPlace: { "@type": "State", name: "New Brunswick" } },
+      { "@type": "City", name: "Miramichi", containedInPlace: { "@type": "State", name: "New Brunswick" } },
+      { "@type": "State", name: "New Brunswick" },
+    ],
     address: {
       "@type": "PostalAddress",
       addressRegion: "NB",

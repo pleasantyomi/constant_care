@@ -99,8 +99,10 @@ const helveticaNeue = localFont({
 const siteUrl = "https://www.constantcarefamilyservices.com";
 // const siteUrl = "https://constant-care.vercel.app/";
 const siteName = "Constant Care Family Services Inc.";
+// Shown under the site in search results (~155 characters is the visible
+// limit), so it names the areas served.
 const siteDescription =
-  "Constant Care Family Services Inc is a modern care-centred organisation committed to delivering inclusive, person-centred support services with professionalism, compassion, and structure.";
+  "Constant Care Family Services provides compassionate, person-centred home and community support across New Brunswick. We offer personal care, companionship, respite and emergency respite, residential and group home supports, disability services, senior care, mental health and wellness support, life skills development, and individualized care planning for children, youth, adults, and seniors. Our dedicated team is committed to delivering safe, reliable, culturally responsive services that promote independence, dignity, inclusion, and quality of life. Care with Purpose. Support You Can Trust.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -119,6 +121,19 @@ export const metadata: Metadata = {
     "Constant Care Family Services",
     "Constant care",
     "Constant Care Family Services Inc.",
+    // Local searches. Google ignores this tag, so the areas also appear in
+    // the description and in structured data (areaServed).
+    "care business in Fredericton",
+    "home care Fredericton",
+    "home care Moncton",
+    "home care Miramichi",
+    "Fredericton",
+    "Moncton",
+    "Miramichi",
+    "Fredericton Moncton Miramichi",
+    "home care New Brunswick",
+    "care services New Brunswick",
+    "New Brunswick",
   ],
   authors: [{ name: siteName }],
   creator: siteName,
@@ -156,7 +171,7 @@ export const metadata: Metadata = {
         url: "/og_image.jpg",
         width: 1200,
         height: 630,
-        alt: "Constant Care Family servies Inc",
+        alt: "Constant Care Family Services Inc.",
       },
     ],
   },
