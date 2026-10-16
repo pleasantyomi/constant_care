@@ -12,20 +12,21 @@ import {
 import AccentDash from "@/components/animations/accent-dash";
 import FadeIn from "@/components/animations/fade-in";
 import StaggerChildren from "@/components/animations/stagger-children";
+import { audiences as sharedAudiences, type AudienceIcon } from "@/lib/about-content";
 
-const audiences: {
-  icon: ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
-  title: string;
-}[] = [
-  { icon: Accessibility, title: "Individuals living with disabilities" },
-  { icon: Backpack, title: "Children and youth" },
-  { icon: HandHeart, title: "Families and caregivers" },
-  { icon: UserRound, title: "Seniors" },
-  { icon: Compass, title: "Individuals seeking greater independence" },
-  { icon: Handshake, title: "Community organizations" },
-  { icon: Landmark, title: "Indigenous communities" },
-  { icon: Building2, title: "Government and healthcare partners" },
-];
+const icons: Record<AudienceIcon, ComponentType<{ className?: string; "aria-hidden"?: boolean }>> = {
+  Accessibility,
+  Backpack,
+  HandHeart,
+  UserRound,
+  Compass,
+  Handshake,
+  Landmark,
+  Building2,
+};
+
+// Copy lives in packages/shared so the mobile app shows the same list.
+const audiences = sharedAudiences.map((audience) => ({ ...audience, icon: icons[audience.icon] }));
 
 export default function WhoWeServe() {
   return (

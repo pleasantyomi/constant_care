@@ -228,3 +228,29 @@ export async function deleteTeamMember(id: string) {
   revalidatePath("/admin/team");
   revalidatePath("/our-team");
 }
+
+// --- Callback requests (from the app) -------------------------------------
+
+export async function updateCallbackStatus(id: string, status: string) {
+  await requireAdminSession();
+  if (!db) throw new Error("Database not configured");
+  await db
+    .update(schema.callbackRequests)
+    .set({ status })
+    .where(eq(schema.callbackRequests.id, id));
+  revalidatePath("/admin/callbacks");
+  revalidatePath("/admin");
+}
+
+// --- Referrer-facing progress note -----------------------------------------
+
+export async function updateReferrerUpdate(id: string, formData: FormData) {
+  await requireAdminSession();
+  if (!db) throw new Error("Database not configured");
+  const update = String(formData.get("referrerUpdate") || "").trim().slice(0, 500);
+  await db
+    .update(schema.referrals)
+    .set({ referrerUpdate: update || null, referrerUpdateAt: update ? new Date() : null })
+    .where(eq(schema.referrals.id, id));
+  revalidatePath(`/admin/referrals/${id}`);
+}

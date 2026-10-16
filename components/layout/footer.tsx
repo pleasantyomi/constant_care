@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import AccentDash from "@/components/animations/accent-dash";
 import StaggerChildren from "@/components/animations/stagger-children";
 import { mainNav as quickLinks, services as ourServices } from "@/lib/nav";
+import { contact, mailtoHref, telHref } from "@/lib/contact";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -110,12 +111,12 @@ export default function Footer() {
             </h2>
             <AccentDash className="w-8 mt-2" />
             <p className="mt-4 space-y-0.5 text-sm leading-relaxed text-white/70">
-              <Link href="tel:+15063000055">Phone: +1 (506) 300-0432</Link>
+              <Link href={telHref}>Phone: {contact.phoneDisplay}</Link>
               <Link
                 className="block"
-                href="mailto:info@constantcarefamilyservices.com"
+                href={mailtoHref}
               >
-                info@constantcarefamilyservices.com
+                {contact.email}
               </Link>
             </p>
             {status === "sent" ? (
@@ -160,10 +161,10 @@ export default function Footer() {
             All rights reserved.
           </p>
           <div className="flex gap-5">
-            <Link href="/" className="transition-colors hover:text-accent">
+            <Link href="/privacy-policy" className="transition-colors hover:text-accent">
               Privacy Policy
             </Link>
-            <Link href="/" className="transition-colors hover:text-accent">
+            <Link href="/terms-of-service" className="transition-colors hover:text-accent">
               Terms of Service
             </Link>
           </div>

@@ -10,49 +10,19 @@ import {
 import AccentDash from "@/components/animations/accent-dash";
 import FadeIn from "@/components/animations/fade-in";
 import StaggerChildren from "@/components/animations/stagger-children";
+import { values as sharedValues, type ValueIcon } from "@/lib/about-content";
 
-const values: {
-  icon: ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
-  title: string;
-  description: string;
-}[] = [
-  {
-    icon: Heart,
-    title: "Compassion",
-    description:
-      "We treat every individual with kindness, empathy, and genuine respect.",
-  },
-  {
-    icon: Award,
-    title: "Excellence",
-    description:
-      "We pursue the highest standards of quality, professionalism, accountability, and continuous improvement.",
-  },
-  {
-    icon: BadgeCheck,
-    title: "Integrity",
-    description:
-      "We build trust through honesty, transparency, ethical leadership, and responsible decision-making.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Empowerment",
-    description:
-      "We encourage independence by helping individuals develop confidence, skills, and opportunities for growth.",
-  },
-  {
-    icon: Users,
-    title: "Inclusion",
-    description:
-      "We celebrate diversity and create welcoming environments where everyone belongs.",
-  },
-  {
-    icon: Handshake,
-    title: "Collaboration",
-    description:
-      "We believe lasting change happens through strong partnerships with families, communities, healthcare providers, Indigenous organizations, and government.",
-  },
-];
+const icons: Record<ValueIcon, ComponentType<{ className?: string; "aria-hidden"?: boolean }>> = {
+  Heart,
+  Award,
+  BadgeCheck,
+  TrendingUp,
+  Users,
+  Handshake,
+};
+
+// Copy lives in packages/shared so the mobile app shows the same values.
+const values = sharedValues.map((value) => ({ ...value, icon: icons[value.icon] }));
 
 export default function Values() {
   return (

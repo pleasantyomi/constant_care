@@ -1,5 +1,6 @@
 import { Text } from "@react-email/components";
 import { BrandedEmailLayout } from "./notification-email";
+import { contact, telHref } from "@/lib/contact";
 
 export function ApplicationConfirmationEmail({
   name,
@@ -31,8 +32,8 @@ export function ApplicationConfirmationEmail({
       </Text>
       <Text style={{ fontSize: "14px", color: "#0F2E42", margin: 0 }}>
         If you have any questions in the meantime, feel free to call us at{" "}
-        <a href="tel:+15063000055" style={{ color: "#1A4F72" }}>
-          +1 (506) 300-0055
+        <a href={telHref} style={{ color: "#1A4F72" }}>
+          {contact.phoneDisplay}
         </a>
         .
       </Text>

@@ -3,9 +3,11 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { db, schema } from "@/lib/db";
-import { updateReferralStatus } from "@/lib/actions/admin";
+import { updateReferralStatus, updateReferrerUpdate } from "@/lib/actions/admin";
 import StatusSelect from "@/components/admin/status-select";
 import StatusBadge from "@/components/admin/status-badge";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 
 export const dynamic = "force-dynamic";
 
@@ -92,6 +94,36 @@ export default async function ReferralDetailPage({
           Client/guardian consent to share this information was confirmed at
           submission.
         </p>
+      </div>
+
+      <div className="p-6 mt-6 bg-white border rounded-lg shadow-sm border-border">
+        <h2 className="text-xs font-semibold tracking-wide uppercase text-accent">
+          Update for the Referrer
+        </h2>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Shown to {referral.referrerName} in the app&rsquo;s referral tracker,
+          next to the status. Keep it short and leave out client details, for
+          example &ldquo;Assessment booked for Oct 17.&rdquo;
+        </p>
+        <form action={updateReferrerUpdate.bind(null, referral.id)} className="grid gap-3 mt-4">
+          <Textarea
+            name="referrerUpdate"
+            defaultValue={referral.referrerUpdate ?? ""}
+            maxLength={500}
+            rows={3}
+            placeholder="No update shown yet"
+          />
+          <div className="flex items-center gap-3">
+            <Button type="submit" size="sm">
+              Save update
+            </Button>
+            {referral.referrerUpdateAt && (
+              <span className="text-xs text-muted-foreground">
+                Last updated {referral.referrerUpdateAt.toLocaleString()}
+              </span>
+            )}
+          </div>
+        </form>
       </div>
     </div>
   );

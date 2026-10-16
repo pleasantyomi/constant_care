@@ -17,6 +17,8 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { services } from "@/lib/nav";
+import { contact, mailtoHref, telHref } from "@/lib/contact";
+import { formCopy } from "@/lib/forms";
 import Link from "next/link";
 
 export default function Form() {
@@ -100,11 +102,11 @@ export default function Form() {
         <div>
           <h2 className="pb-2 text-lg font-medium">Contact</h2>
           <p className="grid lg:text-sm md:text-[12px] text-sm">
-            <Link href="tel:+15063000432">Phone: +1 (506) 300-0432</Link>
+            <Link href={telHref}>Phone: {contact.phoneDisplay}</Link>
             <span>
               Email:{" "}
-              <Link href="mailto:info@constantcarefamilyservices.com">
-                info@constantcarefamilyservices.com
+              <Link href={mailtoHref}>
+                {contact.email}
               </Link>
             </span>
           </p>
@@ -112,7 +114,7 @@ export default function Form() {
         <div>
           <h2 className="pb-2 text-lg font-medium">Open Time</h2>
           <p className="grid lg:text-sm md:text-[12px] text-sm">
-            <span>Monday - Friday: 8:00 AM - 5:30 PM</span>
+            <span>{contact.officeHours}</span>
           </p>
         </div>
         <div>
@@ -231,12 +233,11 @@ export default function Form() {
               disabled={status === "sending"}
               className="w-6/12 lg:w-3/12 disabled:opacity-60"
             >
-              {status === "sending" ? "Sending..." : "Send Message"}
+              {status === "sending" ? formCopy.contact.sending : formCopy.contact.submit}
             </Button>
             {status === "sent" && (
               <p className="mt-3 text-sm text-accent">
-                Thanks! We&rsquo;ve received your message and will be in touch
-                soon.
+                {formCopy.contact.success}
               </p>
             )}
             {status === "error" && (

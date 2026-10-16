@@ -1,27 +1,10 @@
 import Image from "next/image";
 import FadeIn from "@/components/animations/fade-in";
+import { missionVision } from "@/lib/about-content";
 import AccentDash from "@/components/animations/accent-dash";
 
-const cards = [
-  {
-    slug: "mission",
-    title: "Our Mission",
-    heading: "Transforming Lives Through Purposeful Care",
-    paragraphs: [
-      "Our mission is to deliver compassionate, innovative, and person-centred support that empowers individuals to achieve greater independence while strengthening families and creating healthier, more inclusive communities.",
-      "We are committed to providing exceptional services through professional excellence, integrity, collaboration, and continuous innovation, ensuring every individual receives the support they need to reach their fullest potential.",
-    ],
-  },
-  {
-    slug: "vision",
-    title: "Our Vision",
-    heading: "Shaping the Future of Community Care",
-    paragraphs: [
-      "Our vision is to become Canada's most trusted community care organization, recognized for transforming lives through innovation, leadership, and exceptional service.",
-      "We envision communities where every individual, regardless of age, ability, or circumstance, has equitable access to opportunities, compassionate support, and the resources needed to live with dignity, purpose, and confidence.",
-    ],
-  },
-];
+// Copy lives in packages/shared so the mobile app shows the same text.
+const cards = missionVision;
 
 export default function MissionVision() {
   return (
