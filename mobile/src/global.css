@@ -1,0 +1,7 @@
+@import 'tailwindcss';
+@import 'uniwind';
+
+/* Brand colours, radii, and fonts, generated from packages/tokens — the same
+   source as the website's app/globals.css. Edit there, then run
+   `pnpm tokens:build` from the repo root. */
+@import '../../packages/tokens/uniwind.css';
