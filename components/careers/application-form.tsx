@@ -14,17 +14,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { careerPositions as positions, formCopy } from "@/lib/forms";
 
-const positions = [
-  "Youth Support Worker",
-  "Behavioural Analyst",
-  "Personal Support Worker (PSW)",
-  "Disability Support Worker (DSW)",
-  "Respite Worker",
-  "Care Coordinator",
-  "Administrative / Office Role",
-  "Other",
-];
 
 export default function ApplicationForm() {
   const resumeInputId = useId();
@@ -69,12 +60,12 @@ export default function ApplicationForm() {
     <section id="apply" className="py-14 bg-secondary/40 scroll-mt-24">
       <div className="w-11/12 mx-auto md:w-10/12 lg:w-7/12">
         <FadeIn className="mb-10 text-center">
-          <h1 className="text-2xl md:text-3xl text-primary">Apply Now</h1>
+          <h1 className="text-2xl md:text-3xl text-primary">
+            {formCopy.application.title}
+          </h1>
           <AccentDash className="w-2/12 mx-auto mt-2 origin-center md:mt-3 md:w-1/12 border-primary" />
           <p className="max-w-lg mx-auto mt-4 text-sm leading-relaxed text-muted-foreground">
-            Tell us a bit about yourself. If a role matching your interests
-            isn&rsquo;t open right now, we&rsquo;ll keep your application on
-            file and reach out when one is.
+            {formCopy.application.intro}
           </p>
         </FadeIn>
 
@@ -172,9 +163,25 @@ export default function ApplicationForm() {
               />
             </div>
 
-            <Button type="submit" className="justify-self-start">
-              Apply Now
-            </Button>
+            <div>
+              <Button
+                type="submit"
+                disabled={status === "sending"}
+                className="justify-self-start"
+              >
+                {status === "sending"
+                  ? formCopy.application.sending
+                  : formCopy.application.submit}
+              </Button>
+              {status === "sent" && (
+                <p className="mt-3 text-sm text-accent">
+                  {formCopy.application.success}
+                </p>
+              )}
+              {status === "error" && (
+                <p className="mt-3 text-sm text-destructive">{errorMessage}</p>
+              )}
+            </div>
           </form>
         </FadeIn>
       </div>

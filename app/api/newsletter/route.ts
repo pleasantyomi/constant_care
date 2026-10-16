@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { db, schema } from "@/lib/db";
+import { checkRateLimit } from "@/lib/rate-limit";
 import { newsletterSchema } from "@/lib/validation";
 import { sendNewsletterNotification } from "@/lib/email/mailer";
 
@@ -10,6 +11,9 @@ export async function POST(request: Request) {
       { status: 503 },
     );
   }
+
+  const limited = await checkRateLimit(request, "newsletter");
+  if (limited) return limited;
 
   const body = await request.json().catch(() => null);
   const parsed = newsletterSchema.safeParse(body);

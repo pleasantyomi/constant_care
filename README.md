@@ -1,5 +1,10 @@
 # Constant Care Family Services — Website + Admin
 
+> **Use pnpm, not npm.** This repo is a pnpm workspace: the website (repo
+> root), the Expo mobile app (`mobile/`, see its README), and code both share
+> (`packages/tokens` for colours/fonts, `packages/shared` for content and form
+> validation). Vercel builds with pnpm too.
+
 Next.js site for Constant Care Family Services Inc. (New Brunswick), with a
 Postgres-backed contact/referral/application pipeline, branded email
 notifications, and an admin panel at `/admin`.
@@ -7,11 +12,11 @@ notifications, and an admin panel at `/admin`.
 ## Local setup
 
 ```bash
-npm install
+pnpm install
 cp .env.example .env.local   # then fill in real values, see below
-npm run db:migrate           # applies the schema to your database
-npm run admin:create -- "you@example.com" "a-strong-password" "Your Name"
-npm run dev
+pnpm db:migrate              # applies the schema to your database
+pnpm admin:create "you@example.com" "a-strong-password" "Your Name"
+pnpm dev
 ```
 
 ## Environment variables
@@ -44,13 +49,13 @@ is useful for local UI work without a full backend setup.
 Schema lives in `lib/db/schema.ts` (Drizzle ORM). After changing it:
 
 ```bash
-npm run db:generate   # writes a new migration file under drizzle/
-npm run db:migrate     # applies pending migrations to DATABASE_URL
-npm run db:studio      # opens Drizzle Studio to browse data
+pnpm db:generate      # writes a new migration file under drizzle/
+pnpm db:migrate       # applies pending migrations to DATABASE_URL
+pnpm db:studio        # opens Drizzle Studio to browse data
 ```
 
 Tables: `admin_users`, `contact_messages`, `referrals`, `applications`,
-`newsletter_subscribers`, `job_openings`, `impact_stats`.
+`newsletter_subscribers`, `job_openings`, `impact_stats`, `team_members`.
 
 ## Admin panel
 
@@ -58,7 +63,7 @@ Tables: `admin_users`, `contact_messages`, `referrals`, `applications`,
 are created from the command line by whoever holds the database credentials:
 
 ```bash
-npm run admin:create -- "you@example.com" "a-strong-password" "Your Name"
+pnpm admin:create "you@example.com" "a-strong-password" "Your Name"
 ```
 
 From the dashboard, admins can:
@@ -88,7 +93,7 @@ An initial admin account was created during setup:
 To change a password later:
 
 ```bash
-npm run admin:set-password -- "admin@constantcarefamilyservices.com" "new-password"
+pnpm admin:set-password "admin@constantcarefamilyservices.com" "new-password"
 ```
 
 Note: the panel exposes contact/referral/application submissions (names,

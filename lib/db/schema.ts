@@ -6,6 +6,7 @@ import {
   boolean,
   integer,
   timestamp,
+  date,
 } from "drizzle-orm/pg-core";
 
 // --- Admin auth -------------------------------------------------------
@@ -51,6 +52,10 @@ export const referrals = pgTable("referrals", {
   consent: boolean("consent").notNull(),
   // new | contacted | in-progress | closed
   status: varchar("status", { length: 20 }).default("new").notNull(),
+  // Short progress note shown to the referrer in the app's referral tracker
+  // (e.g. "Assessment booked for Oct 17"). Never shown to anyone else.
+  referrerUpdate: text("referrer_update"),
+  referrerUpdateAt: timestamp("referrer_update_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
@@ -111,4 +116,55 @@ export const teamMembers = pgTable("team_members", {
   displayOrder: integer("display_order").default(0).notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+// --- Abuse protection -------------------------------------------------
+
+// One row per (form, client IP) counting submissions in the current window.
+// See lib/rate-limit.ts.
+export const rateLimits = pgTable("rate_limits", {
+  key: varchar("key", { length: 255 }).primaryKey(),
+  count: integer("count").default(0).notNull(),
+  windowStart: timestamp("window_start").defaultNow().notNull(),
+});
+
+export const callbackRequests = pgTable("callback_requests", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(),
+  phone: varchar("phone", { length: 50 }).notNull(),
+  // Preferred slot in Atlantic time, stored as entered (no timezone maths).
+  preferredDate: date("preferred_date").notNull(),
+  preferredTime: varchar("preferred_time", { length: 5 }).notNull(),
+  note: text("note"),
+  // Answers from the app's care finder, if the caller came from it.
+  careFinder: text("care_finder"),
+  // new | scheduled | done | cancelled
+  status: varchar("status", { length: 20 }).default("new").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+// --- App sign-in (one-time email codes, bearer sessions) ----------------
+// See lib/auth/app-session.ts.
+
+export const authCodes = pgTable("auth_codes", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  email: varchar("email", { length: 255 }).notNull(),
+  codeHash: text("code_hash").notNull(),
+  attempts: integer("attempts").default(0).notNull(),
+  expiresAt: timestamp("expires_at").notNull(),
+  usedAt: timestamp("used_at"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const appSessions = pgTable("app_sessions", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  // SHA-256 of the bearer token; the token itself is never stored.
+  tokenHash: text("token_hash").notNull().unique(),
+  email: varchar("email", { length: 255 }).notNull(),
+  // referrer (later: family, caregiver)
+  role: varchar("role", { length: 20 }).notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  lastUsedAt: timestamp("last_used_at").defaultNow().notNull(),
+  expiresAt: timestamp("expires_at").notNull(),
+  revokedAt: timestamp("revoked_at"),
 });

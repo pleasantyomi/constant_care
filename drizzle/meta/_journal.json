@@ -15,6 +15,20 @@
       "when": 1792000609063,
       "tag": "0001_team_members",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792076350752,
+      "tag": "0002_rate_limits",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1792103379905,
+      "tag": "0003_callbacks_and_app_sign_in",
+      "breakpoints": true
     }
   ]
 }

@@ -7,6 +7,8 @@ import { NewsletterNotificationEmail } from "./templates/newsletter-notification
 import { ContactConfirmationEmail } from "./templates/contact-confirmation";
 import { ReferralConfirmationEmail } from "./templates/referral-confirmation";
 import { ApplicationConfirmationEmail } from "./templates/application-confirmation";
+import { CallbackNotificationEmail } from "./templates/callback-notification";
+import { SignInCodeEmail } from "./templates/sign-in-code";
 
 // Sends through the Google Workspace mailbox (info@constantcarefamilyservices.com)
 // via SMTP rather than a third-party email API — the domain is on Wix, and
@@ -160,5 +162,32 @@ export async function sendApplicationConfirmation(input: {
     subject:
       "We've received your application — Constant Care Family Services",
     react: ApplicationConfirmationEmail(input),
+  });
+}
+
+export async function sendCallbackNotification(input: {
+  name: string;
+  phone: string;
+  preferredDate: string;
+  preferredTime: string;
+  note?: string | null;
+  careFinder?: string | null;
+}) {
+  if (!TO) return { skipped: true as const };
+  return send({
+    to: TO,
+    replyTo: TO,
+    subject: `Callback request: ${input.name}, ${input.preferredDate} ${input.preferredTime}`,
+    react: CallbackNotificationEmail(input),
+  });
+}
+
+export async function sendSignInCode(input: { email: string; code: string }) {
+  if (!TO) return { skipped: true as const };
+  return send({
+    to: input.email,
+    replyTo: TO,
+    subject: `${input.code} is your Constant Care sign-in code`,
+    react: SignInCodeEmail({ code: input.code }),
   });
 }

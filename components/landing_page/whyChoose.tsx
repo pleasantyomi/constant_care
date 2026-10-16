@@ -22,47 +22,21 @@ import {
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 import AccentDash from "@/components/animations/accent-dash";
+import { whyChooseUs, type WhyChooseIcon } from "@/lib/home-content";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-const content = [
-  {
-    icon: HeartHandshake,
-    title: "Compassionate Professionals",
-    description:
-      "Our support workers bring genuine empathy and human connection to every visit. We hire people who treat each individual with the warmth and respect they deserve, not just a checklist of tasks to complete.",
-  },
-  {
-    icon: ClipboardList,
-    title: "Personalized Care Plans",
-    description:
-      "No two people are the same, so no two care plans are either. We build every plan around each individual's goals, routines, and preferences to make sure support actually fits their life.",
-  },
-  {
-    icon: Clock,
-    title: "Reliable & Responsive Support",
-    description:
-      "Families and partners can count on us to show up and follow through, every time. When needs change, we respond quickly so support never falls through the cracks.",
-  },
-  {
-    icon: Users,
-    title: "Community-Based Services",
-    description:
-      "We meet people where they are, whether that's at home, in the community, or somewhere in between. Our services are built to fit into real life, not the other way around.",
-  },
-  {
-    icon: UserRound,
-    title: "Person-Centered Care",
-    description:
-      "Every plan starts with the individual: their goals, preferences, and pace, not a one-size-fits-all program. We keep families and loved ones informed and involved every step of the way, because real care puts the person at the centre and treats everyone around them as a partner.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Trusted & Professional Team",
-    description:
-      "Every member of our team is trained, certified, and held to a high standard of accountability. You can trust that the person supporting your loved one is qualified, prepared, and professional.",
-  },
-];
+const icons: Record<WhyChooseIcon, ComponentType<{ className?: string; "aria-hidden"?: boolean }>> = {
+  HeartHandshake,
+  ClipboardList,
+  Clock,
+  Users,
+  UserRound,
+  ShieldCheck,
+};
+
+// Copy lives in packages/shared so the mobile app shows the same points.
+const content = whyChooseUs.map((item) => ({ ...item, icon: icons[item.icon] }));
 
 // Mobile shows the six cards as two pages of three.
 const MOBILE_CHUNK_SIZE = 3;

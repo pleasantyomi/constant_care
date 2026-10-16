@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { put } from "@vercel/blob";
 import { db, schema } from "@/lib/db";
+import { checkRateLimit } from "@/lib/rate-limit";
 import { applicationSchema } from "@/lib/validation";
 import { SITE_URL } from "@/lib/site";
 import {
@@ -51,6 +52,9 @@ export async function POST(request: Request) {
       { status: 503 },
     );
   }
+
+  const limited = await checkRateLimit(request, "applications");
+  if (limited) return limited;
 
   const formData = await request.formData();
   const parsed = applicationSchema.safeParse({

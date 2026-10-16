@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import StaggerChildren from "@/components/animations/stagger-children";
+import { aboutHero } from "@/lib/about-content";
 
 export default function Hero() {
   return (
@@ -17,15 +18,10 @@ export default function Hero() {
 
       <StaggerChildren className="relative w-11/12 max-w-3xl mx-auto text-center text-white">
         <h1 className="text-2xl font-semibold leading-tight md:text-3xl lg:text-5xl">
-          Redefining Community Care Through Compassion, Innovation, and
-          Excellence.
+          {aboutHero.heading}
         </h1>
         <p className="max-w-2xl mx-auto mt-6 text-sm leading-relaxed md:text-base text-white/85">
-          At Constant Care Family Services, we deliver person-centred support
-          that empowers individuals, strengthens families, and builds more
-          inclusive communities. Through compassionate care, trusted
-          partnerships, and innovative solutions, we help people live with
-          greater independence, dignity, and confidence.
+          {aboutHero.intro}
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-3 mt-8">

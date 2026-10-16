@@ -1,0 +1,4 @@
+# The Expo app (mobile/) lives on the mobile-app branch for now; add
+# "mobile" back here when it merges into master.
+packages:
+  - "packages/*"

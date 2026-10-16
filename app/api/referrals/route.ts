@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { db, schema } from "@/lib/db";
+import { checkRateLimit } from "@/lib/rate-limit";
 import { referralSchema } from "@/lib/validation";
 import {
   sendReferralNotification,
@@ -13,6 +14,9 @@ export async function POST(request: Request) {
       { status: 503 },
     );
   }
+
+  const limited = await checkRateLimit(request, "referrals");
+  if (limited) return limited;
 
   const body = await request.json().catch(() => null);
   const parsed = referralSchema.safeParse(body);

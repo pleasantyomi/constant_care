@@ -15,21 +15,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { services } from "@/lib/nav";
-
-const relationships = [
-  "Family Member",
-  "Hospital",
-  "Physician",
-  "Social Worker",
-  "Occupational Therapist",
-  "School",
-  "Community Organization",
-  "Indigenous Community",
-  "Case Manager",
-  "Other",
-];
-
-const urgencyLevels = ["Standard", "Priority", "Urgent"];
+import { relationships, urgencyLevels } from "@/lib/referral-options";
+import { formCopy } from "@/lib/forms";
 
 export default function ReferralForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
@@ -90,8 +77,7 @@ export default function ReferralForm() {
           </h1>
           <AccentDash className="w-2/12 mx-auto mt-2 origin-center md:mt-3 md:w-1/12 border-primary" />
           <p className="max-w-lg mx-auto mt-4 text-sm leading-relaxed text-muted-foreground">
-            Please share as much detail as you can: it helps us respond
-            quickly and match the right support.
+            {formCopy.referral.intro}
           </p>
         </FadeIn>
 
@@ -257,9 +243,7 @@ export default function ReferralForm() {
             <label className="flex items-start gap-3 pt-2 text-sm cursor-pointer text-foreground">
               <Checkbox name="consent" required className="mt-0.5" />
               <span>
-                I confirm that the client (or their guardian) has consented
-                to this information being shared with Constant Care Family
-                Services Inc. for the purpose of arranging care.
+                {formCopy.referral.consent}
               </span>
             </label>
 
@@ -269,12 +253,11 @@ export default function ReferralForm() {
                 disabled={status === "sending"}
                 className="justify-self-start disabled:opacity-60"
               >
-                {status === "sending" ? "Submitting..." : "Submit a Referral"}
+                {status === "sending" ? formCopy.referral.sending : formCopy.referral.submit}
               </Button>
               {status === "sent" && (
                 <p className="mt-3 text-sm text-accent">
-                  Thank you! We&rsquo;ve received the referral and will
-                  follow up promptly.
+                  {formCopy.referral.success}
                 </p>
               )}
               {status === "error" && (

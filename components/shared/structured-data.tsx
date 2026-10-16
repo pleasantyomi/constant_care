@@ -1,4 +1,5 @@
 import { SITE_URL } from "@/lib/site";
+import { contact } from "@/lib/contact";
 
 // LocalBusiness JSON-LD, read by Google to understand what the business is,
 // where it serves, and how to contact it. No street address on purpose —
@@ -13,8 +14,8 @@ export default function StructuredData() {
     url: SITE_URL,
     logo: `${SITE_URL}/logo/CCFSI_LOGO_A.png`,
     image: `${SITE_URL}/og_image.jpg`,
-    telephone: "+1-506-300-0055",
-    email: "info@constantcarefamilyservices.com",
+    telephone: contact.phoneSchema,
+    email: contact.email,
     areaServed: {
       "@type": "State",
       name: "New Brunswick",
