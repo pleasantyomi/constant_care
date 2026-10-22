@@ -19,6 +19,15 @@ const nextConfig: NextConfig = {
   // equivalent instead of letting them 404.
   async redirects() {
     return [
+      // One canonical host for search engines: the bare domain served the
+      // same site as www, splitting it in two. (Preview and vercel.app URLs
+      // aren't affected; Vercel already sends vercel.app to the domain.)
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "constantcarefamilyservices.com" }],
+        destination: "https://www.constantcarefamilyservices.com/:path*",
+        permanent: true,
+      },
       {
         source: "/our-services/disability-support-services",
         destination: "/our-services/disability-complex-support",

@@ -4,7 +4,10 @@ import type { Metadata } from "next";
 import { CheckCircle2 } from "lucide-react";
 import FadeIn from "@/components/animations/fade-in";
 import StaggerChildren from "@/components/animations/stagger-children";
+import Link from "next/link";
+import { MapPin } from "lucide-react";
 import { servicesContent } from "@/lib/services-content";
+import { formatAreaList, serviceAreaNames } from "@/lib/service-areas";
 
 export function generateStaticParams() {
   return servicesContent.map((item) => ({ slug: item.slug }));
@@ -20,7 +23,8 @@ export async function generateMetadata({
   if (!category) return {};
 
   return {
-    title: category.title,
+    // "Home Care Services in New Brunswick": matches local searches.
+    title: `${category.title} in New Brunswick`,
     description: category.description,
     alternates: { canonical: `/our-services/${category.slug}` },
   };
@@ -74,6 +78,17 @@ export default async function ServicePage({
           </div>
         ))}
       </StaggerChildren>
+
+      <FadeIn className="flex flex-wrap items-center justify-center gap-2 mt-10 text-sm text-center text-muted-foreground">
+        <MapPin className="w-4 h-4 text-accent" aria-hidden />
+        <span>
+          Serving {formatAreaList(serviceAreaNames)}, and communities across New
+          Brunswick.
+        </span>
+        <Link href="/areas-we-serve" className="font-medium text-primary hover:underline">
+          Areas we serve
+        </Link>
+      </FadeIn>
     </section>
   );
 }

@@ -10,3 +10,5 @@ export * from "./about-content";
 export * from "./brand-mark";
 export * from "./care-finder";
 export * from "./callbacks";
+export * from "./service-areas";
+export * from "./faq";

@@ -1,5 +1,6 @@
 import { SITE_URL } from "@/lib/site";
 import { contact } from "@/lib/contact";
+import { serviceAreas } from "@/lib/service-areas";
 
 // LocalBusiness JSON-LD, read by Google to understand what the business is,
 // where it serves, and how to contact it. No street address on purpose —
@@ -17,10 +18,14 @@ export default function StructuredData() {
     telephone: contact.phoneSchema,
     email: contact.email,
     // The communities served, for local search ("home care Fredericton").
+    // Communities served (lib/service-areas.ts, kept identical to the Google
+    // Business Profile), plus the province as a whole.
     areaServed: [
-      { "@type": "City", name: "Fredericton", containedInPlace: { "@type": "State", name: "New Brunswick" } },
-      { "@type": "City", name: "Moncton", containedInPlace: { "@type": "State", name: "New Brunswick" } },
-      { "@type": "City", name: "Miramichi", containedInPlace: { "@type": "State", name: "New Brunswick" } },
+      ...serviceAreas.map((area) => ({
+        "@type": "City",
+        name: area.name,
+        containedInPlace: { "@type": "State", name: "New Brunswick" },
+      })),
       { "@type": "State", name: "New Brunswick" },
     ],
     address: {

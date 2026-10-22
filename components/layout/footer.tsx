@@ -73,7 +73,11 @@ export default function Footer() {
             </h2>
             <AccentDash className="w-8 mt-2" />
             <ul className="mt-4 space-y-2">
-              {quickLinks.map((link) => (
+              {[
+                ...quickLinks,
+                { label: "Areas We Serve", href: "/areas-we-serve" },
+                { label: "FAQ", href: "/faq" },
+              ].map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
