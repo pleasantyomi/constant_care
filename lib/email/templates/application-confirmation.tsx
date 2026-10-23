@@ -26,14 +26,17 @@ export function ApplicationConfirmationEmail({
         ) : (
           "to Constant Care Family Services"
         )}
-        . We&rsquo;ve received your application and resume, and our hiring
-        team will review it and reach out if you&rsquo;re a good fit for the
-        next steps.
+        . We&rsquo;ve received your application and resume, and our hiring team
+        will review it and reach out if you&rsquo;re a good fit for the next
+        steps.
       </Text>
       <Text style={{ fontSize: "14px", color: "#0F2E42", margin: 0 }}>
-        If you have any questions in the meantime, feel free to call us at{" "}
-        <a href={telHref} style={{ color: "#1A4F72" }}>
-          {contact.phoneDisplay}
+        If you have any questions in the meantime, feel free to contact us at{" "}
+        <a
+          href="mailto:info@constantcarefamilyservices.com"
+          style={{ color: "#1A4F72" }}
+        >
+          info@constantcarefamilyservices.com
         </a>
         .
       </Text>
